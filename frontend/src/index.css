@@ -296,7 +296,9 @@ aside.open li{
     background-attachment: fixed;
   }
   .active{ font-size: 1.3rem;}
-  
+  .category li{
+    margin-right:3px ;
+  }
   .table{
     font-size: 11px;
   }
