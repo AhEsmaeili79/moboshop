@@ -13,21 +13,21 @@ export default function OrderHistoryScreen(props) {
   }, [dispatch]);
   return (
     <div>
-      <h1>Order History</h1>
+      <h1>تاریخچه سفارشات</h1>
       {loading ? (
         <LoadingBox></LoadingBox>
       ) : error ? (
         <MessageBox variant="danger">{error}</MessageBox>
       ) : (
-        <table className="table">
+        <table className="table order-history">
           <thead>
             <tr>
-              <th>ID</th>
-              <th>DATE</th>
-              <th>TOTAL</th>
-              <th>PAID</th>
-              <th>DELIVERED</th>
-              <th>ACTIONS</th>
+              <th>کد </th>
+              <th>تاریخ</th>
+              <th>کل </th>
+              <th>پرداخت</th>
+              <th>تحویل داده شده</th>
+              <th>وضعیت </th>
             </tr>
           </thead>
           <tbody>
@@ -35,12 +35,12 @@ export default function OrderHistoryScreen(props) {
               <tr key={order._id}>
                 <td>{order._id}</td>
                 <td>{order.createdAt.substring(0, 10)}</td>
-                <td>{order.totalPrice.toFixed(2)}</td>
-                <td>{order.isPaid ? order.paidAt.substring(0, 10) : 'No'}</td>
+                <td>{order.totalPrice}   تومان  </td>
+                <td>{order.isPaid ? order.paidAt.substring(0, 10) : 'خیر'}</td>
                 <td>
                   {order.isDelivered
                     ? order.deliveredAt.substring(0, 10)
-                    : 'No'}
+                    : 'خیر'}
                 </td>
                 <td>
                   <button
@@ -50,7 +50,7 @@ export default function OrderHistoryScreen(props) {
                       props.history.push(`/order/${order._id}`);
                     }}
                   >
-                    Details
+                    جزییات
                   </button>
                 </td>
               </tr>

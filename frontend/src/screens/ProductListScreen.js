@@ -70,9 +70,9 @@ export default function ProductListScreen(props) {
   return (
     <div>
       <div className="row">
-        <h1>Products</h1>
+        <h1>محصولات</h1>
         <button type="button" className="primary" onClick={createHandler}>
-          Create Product
+          محصول جدید
         </button>
       </div>
 
@@ -90,12 +90,12 @@ export default function ProductListScreen(props) {
           <table className="table">
             <thead>
               <tr>
-                <th>ID</th>
-                <th>NAME</th>
-                <th>PRICE</th>
-                <th>CATEGORY</th>
-                <th>BRAND</th>
-                <th>ACTIONS</th>
+                <th>کد </th>
+                <th>نام</th>
+                <th>قیمت</th>
+                <th>دسته بندی </th>
+                <th>برند</th>
+                <th>وضعیت</th>
               </tr>
             </thead>
             <tbody>
@@ -103,7 +103,7 @@ export default function ProductListScreen(props) {
                 <tr key={product._id}>
                   <td>{product._id}</td>
                   <td>{product.name}</td>
-                  <td>{product.price}</td>
+                  <td>{product.price} تومان </td>
                   <td>{product.category}</td>
                   <td>{product.brand}</td>
                   <td>
@@ -114,14 +114,14 @@ export default function ProductListScreen(props) {
                         props.history.push(`/product/${product._id}/edit`)
                       }
                     >
-                      Edit
+                      تغییر
                     </button>
                     <button
                       type="button"
                       className="small"
                       onClick={() => deleteHandler(product)}
                     >
-                      Delete
+                      حذف
                     </button>
                   </td>
                 </tr>

@@ -91,7 +91,7 @@ export default function SupportScreen() {
   const submitHandler = (e) => {
     e.preventDefault();
     if (!messageBody.trim()) {
-      alert('Error. Please type message.');
+      alert('خطا. لطفا پیام را وارد کنید');
     } else {
       allMessages = [
         ...allMessages,
@@ -114,7 +114,7 @@ export default function SupportScreen() {
     <div className="row top full-container">
       <div className="col-1 support-users">
         {users.filter((x) => x._id !== userInfo._id).length === 0 && (
-          <MessageBox>No Online User Found</MessageBox>
+          <MessageBox>کاربر فعالی پیدا نشد</MessageBox>
         )}
         <ul>
           {users
@@ -122,7 +122,7 @@ export default function SupportScreen() {
             .map((user) => (
               <li
                 key={user._id}
-                className={user._id === selectedUser._id ? '  selected' : '  '}
+                className={user._id === selectedUser._id ? '  انتخاب' : '  '}
               >
                 <button
                   className="block"
@@ -133,7 +133,7 @@ export default function SupportScreen() {
                 </button>
                 <span
                   className={
-                    user.unread ? 'unread' : user.online ? 'online' : 'offline'
+                    user.unread ? 'خوانده نشده' : user.online ? 'آنلاین ' : 'آفلاین'
                   }
                 />
               </li>
@@ -142,14 +142,14 @@ export default function SupportScreen() {
       </div>
       <div className="col-3 support-messages">
         {!selectedUser._id ? (
-          <MessageBox>Select a user to start chat</MessageBox>
+          <MessageBox>یک کاربر را بر شروع انتخاب کنید </MessageBox>
         ) : (
           <div>
             <div className="row">
-              <strong>Chat with {selectedUser.name} </strong>
+              <strong>شروع گفت و گو با  {selectedUser.name} </strong>
             </div>
             <ul ref={uiMessagesRef}>
-              {messages.length === 0 && <li>No message.</li>}
+              {messages.length === 0 && <li>بدون پیام </li>}
               {messages.map((msg, index) => (
                 <li key={index}>
                   <strong>{`${msg.name}: `}</strong> {msg.body}
@@ -164,7 +164,7 @@ export default function SupportScreen() {
                   type="text"
                   placeholder="type message"
                 />
-                <button type="submit">Send</button>
+                <button type="submit">ارسال</button>
               </form>
             </div>
           </div>

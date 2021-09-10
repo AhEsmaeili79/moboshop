@@ -15,7 +15,7 @@ export const addToCart = (productId, qty) => async (dispatch, getState) => {
   if (cartItems.length > 0 && data.seller._id !== cartItems[0].seller._id) {
     dispatch({
       type: CART_ADD_ITEM_FAIL,
-      payload: `Can't Add To Cart. Buy only from ${cartItems[0].seller.seller.name} in this order`,
+      payload: ` نمیتوان به سبد خرید اضافه کرد از این قسمت   ${cartItems[0].seller.seller.name} سفارش دهید.`,
     });
   } else {
     dispatch({

@@ -56,7 +56,7 @@ function App() {
     <BrowserRouter>
       <div className="grid-container">
         <header className="row">
-          <div>
+          <div className="brand-slider">
             <button
               type="button"
               className="open-sidebar"
@@ -65,90 +65,95 @@ function App() {
               <i className="fa fa-bars"></i>
             </button>
             <Link className="brand" to="/">
-              amazona
+              موبوشاپ
             </Link>
           </div>
-          <div>
+          
+          <div className="search">
             <Route
               render={({ history }) => (
                 <SearchBox history={history}></SearchBox>
               )}
             ></Route>
           </div>
-          <div>
-            <Link to="/cart">
-              Cart
+          <div className='menu'>
+          <Link className="singin-button" to="/cart">
+              سبد خرید
               {cartItems.length > 0 && (
                 <span className="badge">{cartItems.length}</span>
               )}
             </Link>
             {userInfo ? (
-              <div className="dropdown">
+              <div className="dropdown ">
                 <Link to="#">
                   {userInfo.name} <i className="fa fa-caret-down"></i>{' '}
                 </Link>
-                <ul className="dropdown-content">
+                <ul className="dropdown-content ">
                   <li>
-                    <Link to="/profile">User Profile</Link>
+                    <Link to="/profile"> مشحصات  </Link>
                   </li>
                   <li>
-                    <Link to="/orderhistory">Order History</Link>
+                    <Link to="/orderhistory">سفارشات</Link>
                   </li>
                   <li>
                     <Link to="#signout" onClick={signoutHandler}>
-                      Sign Out
+                      خروج
                     </Link>
                   </li>
                 </ul>
               </div>
             ) : (
-              <Link to="/signin">Sign In</Link>
+              
+              <Link className="singin-button" to="/signin">ورود</Link>
+              
             )}
+            
             {userInfo && userInfo.isSeller && (
-              <div className="dropdown">
+              <div className="dropdown ">
                 <Link to="#admin">
-                  Seller <i className="fa fa-caret-down"></i>
+                  فروشنده <i className="fa fa-caret-down"></i>
                 </Link>
-                <ul className="dropdown-content">
+                <ul className="dropdown-content admin">
                   <li>
-                    <Link to="/productlist/seller">Products</Link>
+                    <Link to="/productlist/seller">محصولات</Link>
                   </li>
                   <li>
-                    <Link to="/orderlist/seller">Orders</Link>
+                    <Link to="/orderlist/seller">سفارشات</Link>
                   </li>
                 </ul>
               </div>
             )}
             {userInfo && userInfo.isAdmin && (
-              <div className="dropdown">
+              <div className="dropdown ">
                 <Link to="#admin">
-                  Admin <i className="fa fa-caret-down"></i>
+                  مدیر سایت <i className="fa fa-caret-down"></i>
                 </Link>
-                <ul className="dropdown-content">
+                <ul className="dropdown-content admin">
                   <li>
-                    <Link to="/dashboard">Dashboard</Link>
+                    <Link to="/dashboard">پنل داشبورد</Link>
                   </li>
                   <li>
-                    <Link to="/productlist">Products</Link>
+                    <Link to="/productlist">محصولات</Link>
                   </li>
                   <li>
-                    <Link to="/orderlist">Orders</Link>
+                    <Link to="/orderlist">سفارشات</Link>
                   </li>
                   <li>
-                    <Link to="/userlist">Users</Link>
+                    <Link to="/userlist">کاربران</Link>
                   </li>
                   <li>
-                    <Link to="/support">Support</Link>
+                    <Link to="/support">پشتیبانی</Link>
                   </li>
                 </ul>
               </div>
             )}
-          </div>
+          
+        </div>
         </header>
         <aside className={sidebarIsOpen ? 'open' : ''}>
           <ul className="categories">
-            <li>
-              <strong>Categories</strong>
+            <li className="category">
+              <strong className="category">دسته بندی ها </strong>
               <button
                 onClick={() => setSidebarIsOpen(false)}
                 className="close-sidebar"
@@ -254,9 +259,21 @@ function App() {
 
           <Route path="/" component={HomeScreen} exact></Route>
         </main>
-        <footer className="row center">
+        <footer className="row center ">
           {userInfo && !userInfo.isAdmin && <ChatBox userInfo={userInfo} />}
-          <div>All right reserved</div>{' '}
+            <div className="footer-content">
+              <Link className="brand" to="/">
+              <h3>موبوشاپ</h3>
+              </Link>
+              <ul className="socials">
+                <li><a><i className="fa fa-facebook"></i></a></li>
+                <li><a><i className="fa fa-twitter "> </i></a></li>
+                <li><a><i className="fab fa-youtube "></i></a></li>
+                <li><a><i className="fa fa-instagram "></i></a></li>
+                <li><a><i className="fa fa-linkedin-square "></i></a></li>
+              </ul>
+          </div>
+          <div className="footer-bottom"><p>.<a href="https://qom.tvu.ac.ir/fa/page/923" target="_blank"> University Of Qom</a> Project &copy;2021 Moboshop</p><p> Powered by <a  href="https://github.com/amirhosseine13579/" target="_blank">Amirhossein</a></p> </div>
         </footer>
       </div>
     </BrowserRouter>

@@ -86,7 +86,7 @@ orderRouter.post(
   isAuth,
   expressAsyncHandler(async (req, res) => {
     if (req.body.orderItems.length === 0) {
-      res.status(400).send({ message: 'Cart is empty' });
+      res.status(400).send({ message: 'سبد خرید خالی است' });
     } else {
       const order = new Order({
         seller: req.body.orderItems[0].seller,
@@ -102,7 +102,7 @@ orderRouter.post(
       const createdOrder = await order.save();
       res
         .status(201)
-        .send({ message: 'New Order Created', order: createdOrder });
+        .send({ message: 'سفارش جدید ثبت شد', order: createdOrder });
     }
   })
 );
@@ -115,7 +115,7 @@ orderRouter.get(
     if (order) {
       res.send(order);
     } else {
-      res.status(404).send({ message: 'Order Not Found' });
+      res.status(404).send({ message: 'سفارش پیدا نشد' });
     }
   })
 );
@@ -142,9 +142,9 @@ orderRouter.put(
         .messages()
         .send(
           {
-            from: 'Amazona <amazona@mg.yourdomain.com>',
+            from: 'moboshop <moboshop@gmail.com>',
             to: `${order.user.name} <${order.user.email}>`,
-            subject: `New order ${order._id}`,
+            subject: `سفارش جدید ${order._id}`,
             html: payOrderEmailTemplate(order),
           },
           (error, body) => {
@@ -155,9 +155,9 @@ orderRouter.put(
             }
           }
         );
-      res.send({ message: 'Order Paid', order: updatedOrder });
+      res.send({ message: 'سفارش پرداخت شد', order: updatedOrder });
     } else {
-      res.status(404).send({ message: 'Order Not Found' });
+      res.status(404).send({ message: 'سفارش پیدا نشد' });
     }
   })
 );
@@ -170,9 +170,9 @@ orderRouter.delete(
     const order = await Order.findById(req.params.id);
     if (order) {
       const deleteOrder = await order.remove();
-      res.send({ message: 'Order Deleted', order: deleteOrder });
+      res.send({ message: 'سفارش حذف شد', order: deleteOrder });
     } else {
-      res.status(404).send({ message: 'Order Not Found' });
+      res.status(404).send({ message: 'سفارش پیدا نشد' });
     }
   })
 );
@@ -188,9 +188,9 @@ orderRouter.put(
       order.deliveredAt = Date.now();
 
       const updatedOrder = await order.save();
-      res.send({ message: 'Order Delivered', order: updatedOrder });
+      res.send({ message: 'سفارش تحویل داده شد', order: updatedOrder });
     } else {
-      res.status(404).send({ message: 'Order Not Found' });
+      res.status(404).send({ message: 'سفارش پیدا نشد' });
     }
   })
 );

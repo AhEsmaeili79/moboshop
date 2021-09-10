@@ -1,43 +1,43 @@
 export const prices = [
   {
-    name: 'Any',
+    name: 'همه',
     min: 0,
     max: 0,
   },
   {
-    name: `$1 to $10`,
-    min: 1,
-    max: 10,
+    name: `از 100000 ریال تا 1000000 ریال`,
+    min: 100000,
+    max: 1000000,
   },
   {
-    name: `$10 to $100`,
-    min: 10,
-    max: 100,
+    name: `از 10000000 ریال تا 10000000 ریال`,
+    min: 10000000,
+    max: 10000000,
   },
   {
-    name: `$100 to $1000`,
-    min: 100,
-    max: 1000,
+    name: `از 100000000 ریال تا 1000000000 ریال`,
+    min: 100000000,
+    max: 1000000000,
   },
 ];
 export const ratings = [
   {
-    name: '4stars & up',
+    name: '4 ستاره به بالا',
     rating: 4,
   },
 
   {
-    name: '3stars & up',
+    name: '3 ستاره به بالا',
     rating: 3,
   },
 
   {
-    name: '2stars & up',
+    name: '2 ستاره به بالا',
     rating: 2,
   },
 
   {
-    name: '1stars & up',
+    name: '1 ستاره به بالا',
     rating: 1,
   },
 ];

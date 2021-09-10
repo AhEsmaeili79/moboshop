@@ -36,46 +36,46 @@ export default function RegisterScreen(props) {
     <div>
       <form className="form" onSubmit={submitHandler}>
         <div>
-          <h1>Create Account</h1>
+          <h1>ثبت نام</h1>
         </div>
         {loading && <LoadingBox></LoadingBox>}
         {error && <MessageBox variant="danger">{error}</MessageBox>}
         <div>
-          <label htmlFor="name">Name</label>
+          <label htmlFor="name">نام</label>
           <input
             type="text"
             id="name"
-            placeholder="Enter name"
+            placeholder="نام را وارد کنید "
             required
             onChange={(e) => setName(e.target.value)}
           ></input>
         </div>
         <div>
-          <label htmlFor="email">Email address</label>
+          <label htmlFor="email">ایمیل </label>
           <input
             type="email"
             id="email"
-            placeholder="Enter email"
+            placeholder="ایمیل را وارد کنید "
             required
             onChange={(e) => setEmail(e.target.value)}
           ></input>
         </div>
         <div>
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">کلمه عبور </label>
           <input
             type="password"
             id="password"
-            placeholder="Enter password"
+            placeholder="کلمه عبور را وارد کنید "
             required
             onChange={(e) => setPassword(e.target.value)}
           ></input>
         </div>
         <div>
-          <label htmlFor="confirmPassword">Confirm Password</label>
+          <label htmlFor="confirmPassword">تایید کلمه عبور</label>
           <input
             type="password"
             id="confirmPassword"
-            placeholder="Enter confirm password"
+            placeholder="لطفا کلمه عبور را دوباره وارد کنید"
             required
             onChange={(e) => setConfirmPassword(e.target.value)}
           ></input>
@@ -83,14 +83,14 @@ export default function RegisterScreen(props) {
         <div>
           <label />
           <button className="primary" type="submit">
-            Register
+            ثبت نام 
           </button>
         </div>
         <div>
           <label />
           <div>
-            Already have an account?{' '}
-            <Link to={`/signin?redirect=${redirect}`}>Sign-In</Link>
+            {' '}از قبل ثبت نام کرده اید ؟
+            <Link to={`/signin?redirect=${redirect}`}> ورود </Link>
           </div>
         </div>
       </form>

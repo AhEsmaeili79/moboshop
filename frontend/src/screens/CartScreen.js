@@ -27,13 +27,14 @@ export default function CartScreen(props) {
     props.history.push('/signin?redirect=shipping');
   };
   return (
+    <div className="cart-screen">
     <div className="row top">
       <div className="col-2">
-        <h1>Shopping Cart</h1>
+        <h1>سبد خرید</h1>
         {error && <MessageBox variant="danger">{error}</MessageBox>}
         {cartItems.length === 0 ? (
           <MessageBox>
-            Cart is empty. <Link to="/">Go Shopping</Link>
+           سبد خرید خالی است.<Link to="/"> صفحه اصلی </Link>
           </MessageBox>
         ) : (
           <ul>
@@ -66,13 +67,13 @@ export default function CartScreen(props) {
                       ))}
                     </select>
                   </div>
-                  <div>${item.price}</div>
+                  <div>{item.price} تومان</div>
                   <div>
                     <button
                       type="button"
                       onClick={() => removeFromCartHandler(item.product)}
                     >
-                      Delete
+                      حذف
                     </button>
                   </div>
                 </div>
@@ -82,12 +83,12 @@ export default function CartScreen(props) {
         )}
       </div>
       <div className="col-1">
-        <div className="card card-body">
+        <div className="card card-body incart-screen">
           <ul>
             <li>
               <h2>
-                Subtotal ({cartItems.reduce((a, c) => a + c.qty, 0)} items) : $
-                {cartItems.reduce((a, c) => a + c.price * c.qty, 0)}
+                جمع کلی  (تعداد : {cartItems.reduce((a, c) => a + c.qty, 0)} ) : 
+                {cartItems.reduce((a, c) => a + c.price * c.qty, 0)}تومان
               </h2>
             </li>
             <li>
@@ -97,12 +98,13 @@ export default function CartScreen(props) {
                 className="primary block"
                 disabled={cartItems.length === 0}
               >
-                Proceed to Checkout
+                پرداخت نهایی
               </button>
             </li>
           </ul>
         </div>
       </div>
+    </div>
     </div>
   );
 }

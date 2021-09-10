@@ -14,8 +14,9 @@ export default function DashboardScreen() {
   }, [dispatch]);
   return (
     <div>
+      <div className="dashboard">
       <div className="row">
-        <h1>Dashboard</h1>
+        <h1>پنل کاربری</h1>
       </div>
       {loading ? (
         <LoadingBox />
@@ -23,11 +24,12 @@ export default function DashboardScreen() {
         <MessageBox variant="danger">{error}</MessageBox>
       ) : (
         <>
+        
           <ul className="row summary">
             <li>
               <div className="summary-title color1">
                 <span>
-                  <i className="fa fa-users" /> Users
+                  <i className="fa fa-users" /> کاربران
                 </span>
               </div>
               <div className="summary-body">{summary.users[0].numUsers}</div>
@@ -35,7 +37,7 @@ export default function DashboardScreen() {
             <li>
               <div className="summary-title color2">
                 <span>
-                  <i className="fa fa-shopping-cart" /> Orders
+                  <i className="fa fa-shopping-cart" /> سفارشات
                 </span>
               </div>
               <div className="summary-body">
@@ -45,30 +47,30 @@ export default function DashboardScreen() {
             <li>
               <div className="summary-title color3">
                 <span>
-                  <i className="fa fa-money" /> Sales
+                  <i className="fa fa-money" /> فروش ها
                 </span>
               </div>
               <div className="summary-body">
-                $
+                
                 {summary.orders[0]
-                  ? summary.orders[0].totalSales.toFixed(2)
-                  : 0}
+                  ? summary.orders[0].totalSales
+                  : 0}  تومان 
               </div>
             </li>
           </ul>
           <div>
             <div>
-              <h2>Sales</h2>
+              <h2>فروش ها</h2>
               {summary.dailyOrders.length === 0 ? (
-                <MessageBox>No Sale</MessageBox>
+                <MessageBox>بدون فروش</MessageBox>
               ) : (
                 <Chart
                   width="100%"
                   height="400px"
                   chartType="AreaChart"
-                  loader={<div>Loading Chart</div>}
+                  loader={<div>بارگذاری نمودار</div>}
                   data={[
-                    ['Date', 'Sales'],
+                    ['تاریخ', 'فروش '],
                     ...summary.dailyOrders.map((x) => [x._id, x.sales]),
                   ]}
                 ></Chart>
@@ -76,15 +78,15 @@ export default function DashboardScreen() {
             </div>
           </div>
           <div>
-            <h2>Categories</h2>
+            <h2>دسته بندی ها</h2>
             {summary.productCategories.length === 0 ? (
-              <MessageBox>No Category</MessageBox>
+              <MessageBox>بدون دسته بندی</MessageBox>
             ) : (
               <Chart
                 width="100%"
                 height="400px"
                 chartType="PieChart"
-                loader={<div>Loading Chart</div>}
+                loader={<div>بارگذاری نمودار</div>}
                 data={[
                   ['Category', 'Products'],
                   ...summary.productCategories.map((x) => [x._id, x.count]),
@@ -92,8 +94,10 @@ export default function DashboardScreen() {
               />
             )}
           </div>
+        
         </>
       )}
+    </div>
     </div>
   );
 }

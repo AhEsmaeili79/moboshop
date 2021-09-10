@@ -19,6 +19,9 @@ export default function OrderScreen(props) {
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
 
+
+
+  
   const orderPay = useSelector((state) => state.orderPay);
   const {
     loading: loadingPay,
@@ -34,7 +37,7 @@ export default function OrderScreen(props) {
   const dispatch = useDispatch();
   useEffect(() => {
     const addPayPalScript = async () => {
-      const { data } = await Axios.get('/api/config/paypal');
+      const { data } = await Axios.get('/api/config/zarinpal');
       const script = document.createElement('script');
       script.type = 'text/javascript';
       script.src = `https://www.paypal.com/sdk/js?client-id=${data}`;
@@ -77,16 +80,16 @@ export default function OrderScreen(props) {
     <MessageBox variant="danger">{error}</MessageBox>
   ) : (
     <div>
-      <h1>Order {order._id}</h1>
+      <h1>سفارش :  {order._id}</h1>
       <div className="row top">
         <div className="col-2">
           <ul>
             <li>
               <div className="card card-body">
-                <h2>Shippring</h2>
+                <h2>حمل و انتقال</h2>
                 <p>
-                  <strong>Name:</strong> {order.shippingAddress.fullName} <br />
-                  <strong>Address: </strong> {order.shippingAddress.address},
+                  <strong>نام :</strong> {order.shippingAddress.fullName} <br />
+                  <strong>آدرس : </strong> {order.shippingAddress.address},
                   {order.shippingAddress.city},{' '}
                   {order.shippingAddress.postalCode},
                   {order.shippingAddress.country}
@@ -96,28 +99,28 @@ export default function OrderScreen(props) {
                     Delivered at {order.deliveredAt}
                   </MessageBox>
                 ) : (
-                  <MessageBox variant="danger">Not Delivered</MessageBox>
+                  <MessageBox variant="danger">تحویل داده نشده</MessageBox>
                 )}
               </div>
             </li>
             <li>
               <div className="card card-body">
-                <h2>Payment</h2>
+                <h2>پرداخت</h2>
                 <p>
-                  <strong>Method:</strong> {order.paymentMethod}
+                  <strong>روش :</strong> زرین پال
                 </p>
                 {order.isPaid ? (
                   <MessageBox variant="success">
-                    Paid at {order.paidAt}
+                    پرداخت در  {order.paidAt}
                   </MessageBox>
                 ) : (
-                  <MessageBox variant="danger">Not Paid</MessageBox>
+                  <MessageBox variant="danger">پرداخت نشده</MessageBox>
                 )}
               </div>
             </li>
             <li>
               <div className="card card-body">
-                <h2>Order Items</h2>
+                <h2>موارد سفارش</h2>
                 <ul>
                   {order.orderItems.map((item) => (
                     <li key={item.product}>
@@ -136,7 +139,7 @@ export default function OrderScreen(props) {
                         </div>
 
                         <div>
-                          {item.qty} x ${item.price} = ${item.qty * item.price}
+                          {item.qty} عدد  در {item.price}    تومان     = {item.qty * item.price}  تومان 
                         </div>
                       </div>
                     </li>
@@ -150,33 +153,33 @@ export default function OrderScreen(props) {
           <div className="card card-body">
             <ul>
               <li>
-                <h2>Order Summary</h2>
+                <h2>خلاصه سفارش</h2>
               </li>
               <li>
                 <div className="row">
-                  <div>Items</div>
-                  <div>${order.itemsPrice.toFixed(2)}</div>
+                  <div>موارد</div>
+                  <div>{order.itemsPrice} تومان </div>
                 </div>
               </li>
               <li>
                 <div className="row">
-                  <div>Shipping</div>
-                  <div>${order.shippingPrice.toFixed(2)}</div>
+                  <div>حمل و انتقال</div>
+                  <div>{order.shippingPrice} تومان </div>
                 </div>
               </li>
               <li>
                 <div className="row">
-                  <div>Tax</div>
-                  <div>${order.taxPrice.toFixed(2)}</div>
+                  <div>مالیت</div>
+                  <div>{order.taxPrice} تومان </div>
                 </div>
               </li>
               <li>
                 <div className="row">
                   <div>
-                    <strong> Order Total</strong>
+                    <strong>کل سفارشات</strong>
                   </div>
                   <div>
-                    <strong>${order.totalPrice.toFixed(2)}</strong>
+                    <strong>{order.totalPrice} تومان </strong>
                   </div>
                 </div>
               </li>
@@ -191,10 +194,11 @@ export default function OrderScreen(props) {
                       )}
                       {loadingPay && <LoadingBox></LoadingBox>}
 
-                      <PayPalButton
+                      {/* <PayPalButton
                         amount={order.totalPrice}
                         onSuccess={successPaymentHandler}
-                      ></PayPalButton>
+                      ></PayPalButton> */}
+                     <button type="button" class="primary block peyment" disabled="">پرداخت</button>
                     </>
                   )}
                 </li>
@@ -210,7 +214,7 @@ export default function OrderScreen(props) {
                     className="primary block"
                     onClick={deliverHandler}
                   >
-                    Deliver Order
+                    تحویل سفارش
                   </button>
                 </li>
               )}

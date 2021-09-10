@@ -68,16 +68,16 @@ export default function MapScreen(props) {
           googleAddressId: places[0].id,
         },
       });
-      alert('location selected successfully.');
+      alert('موقعیت مکانی ثبت شد');
       props.history.push('/shipping');
     } else {
-      alert('Please enter your address');
+      alert('لطفا آدرس خود را وارد کنید ');
     }
   };
 
   const getUserCurrentLocation = () => {
     if (!navigator.geolocation) {
-      alert('Geolocation os not supported by this browser');
+      alert('این مرورگر از موقعیت جغرافیایی پشتیبانی نمی کند');
     } else {
       navigator.geolocation.getCurrentPosition((position) => {
         setCenter({
@@ -108,9 +108,9 @@ export default function MapScreen(props) {
             onPlacesChanged={onPlacesChanged}
           >
             <div className="map-input-box">
-              <input type="text" placeholder="Enter your address"></input>
+              <input type="text" placeholder="آدرس خود را وارد کنید "></input>
               <button type="button" className="primary" onClick={onConfirm}>
-                Confirm
+                تایید
               </button>
             </div>
           </StandaloneSearchBox>

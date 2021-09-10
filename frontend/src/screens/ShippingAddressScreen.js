@@ -34,7 +34,7 @@ export default function ShippingAddressScreen(props) {
     let moveOn = true;
     if (!newLat || !newLng) {
       moveOn = window.confirm(
-        'You did not set your location on map. Continue?'
+        'شما موقعیت مکانی خود را در نقشه تنظیم نکرده اید . ادامه ؟'
       );
     }
     if (moveOn) {
@@ -71,73 +71,73 @@ export default function ShippingAddressScreen(props) {
       <CheckoutSteps step1 step2></CheckoutSteps>
       <form className="form" onSubmit={submitHandler}>
         <div>
-          <h1>Shipping Address</h1>
+          <h1>آدرس تحویل</h1>
         </div>
         <div>
-          <label htmlFor="fullName">Full Name</label>
+          <label htmlFor="fullName">نام کامل </label>
           <input
             type="text"
             id="fullName"
-            placeholder="Enter full name"
+            placeholder="نام کامل را وارد کنید."
             value={fullName}
             onChange={(e) => setFullName(e.target.value)}
             required
           ></input>
         </div>
         <div>
-          <label htmlFor="address">Address</label>
+          <label htmlFor="address">آدرس</label>
           <input
             type="text"
             id="address"
-            placeholder="Enter address"
+            placeholder="آدرس را وارد کنید "
             value={address}
             onChange={(e) => setAddress(e.target.value)}
             required
           ></input>
         </div>
         <div>
-          <label htmlFor="city">City</label>
+          <label htmlFor="city">شهر</label>
           <input
             type="text"
             id="city"
-            placeholder="Enter city"
+            placeholder="شهر را وارد کنید "
             value={city}
             onChange={(e) => setCity(e.target.value)}
             required
           ></input>
         </div>
         <div>
-          <label htmlFor="postalCode">Postal Code</label>
+          <label htmlFor="postalCode">کد پستی </label>
           <input
             type="text"
             id="postalCode"
-            placeholder="Enter postal code"
+            placeholder="کد پستی را وارد کنید "
             value={postalCode}
             onChange={(e) => setPostalCode(e.target.value)}
             required
           ></input>
         </div>
         <div>
-          <label htmlFor="country">Country</label>
+          <label htmlFor="country">کشور </label>
           <input
             type="text"
             id="country"
-            placeholder="Enter country"
+            placeholder="کشور را وارد کنید "
             value={country}
             onChange={(e) => setCountry(e.target.value)}
             required
           ></input>
         </div>
         <div>
-          <label htmlFor="chooseOnMap">Location</label>
+          <label htmlFor="chooseOnMap">موقعیت مکانی </label>
           <button type="button" onClick={chooseOnMap}>
-            Choose On Map
+           انتخاب بر روی نقشه 
           </button>
         </div>
         <div>
           <label />
           <button className="primary" type="submit">
-            Continue
+            ادامه
           </button>
         </div>
       </form>

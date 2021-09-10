@@ -30,11 +30,11 @@ export default function UserListScreen(props) {
   };
   return (
     <div>
-      <h1>Users</h1>
+      <h1>کاربران</h1>
       {loadingDelete && <LoadingBox></LoadingBox>}
       {errorDelete && <MessageBox variant="danger">{errorDelete}</MessageBox>}
       {successDelete && (
-        <MessageBox variant="success">User Deleted Successfully</MessageBox>
+        <MessageBox variant="success">کاربر با موفقیت حذف شد</MessageBox>
       )}
       {loading ? (
         <LoadingBox></LoadingBox>
@@ -44,12 +44,12 @@ export default function UserListScreen(props) {
         <table className="table">
           <thead>
             <tr>
-              <th>ID</th>
-              <th>NAME</th>
-              <th>EMAIL</th>
-              <th>IS SELLER</th>
-              <th>IS ADMIN</th>
-              <th>ACTIONS</th>
+              <th>کد </th>
+              <th>نام</th>
+              <th>ایمیل</th>
+              <th>فروشنده</th>
+              <th>مدیر سایت</th>
+              <th>وضعیت</th>
             </tr>
           </thead>
           <tbody>
@@ -58,22 +58,22 @@ export default function UserListScreen(props) {
                 <td>{user._id}</td>
                 <td>{user.name}</td>
                 <td>{user.email}</td>
-                <td>{user.isSeller ? 'YES' : ' NO'}</td>
-                <td>{user.isAdmin ? 'YES' : 'NO'}</td>
+                <td>{user.isSeller ? 'بله' : ' خیر'}</td>
+                <td>{user.isAdmin ? 'بله' : 'خیر'}</td>
                 <td>
                   <button
                     type="button"
                     className="small"
                     onClick={() => props.history.push(`/user/${user._id}/edit`)}
                   >
-                    Edit
+                    تغییر
                   </button>
                   <button
                     type="button"
                     className="small"
                     onClick={() => deleteHandler(user)}
                   >
-                    Delete
+                    حذف
                   </button>
                 </td>
               </tr>

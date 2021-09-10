@@ -13,7 +13,7 @@ export default function ChatBox(props) {
   const [isOpen, setIsOpen] = useState(false);
   const [messageBody, setMessageBody] = useState('');
   const [messages, setMessages] = useState([
-    { name: 'Admin', body: 'Hello there, Please ask your question.' },
+    { name: 'مدیریت سایت', body: 'سلام لطفا سوال خود را بپرسید ' },
   ]);
 
   useEffect(() => {
@@ -45,7 +45,7 @@ export default function ChatBox(props) {
   const submitHandler = (e) => {
     e.preventDefault();
     if (!messageBody.trim()) {
-      alert('Error. Please type message.');
+      alert('Error. لطفا پیام خود را وارد کنید ');
     } else {
       setMessages([...messages, { body: messageBody, name: userInfo.name }]);
       setMessageBody('');
@@ -69,9 +69,9 @@ export default function ChatBox(props) {
           <i className="fa fa-support" />
         </button>
       ) : (
-        <div className="card card-body">
+        <div className="card card-body sunpport-card">
           <div className="row">
-            <strong>Support </strong>
+            <strong>پشتیبانی </strong>
             <button type="button" onClick={closeHandler}>
               <i className="fa fa-close" />
             </button>
@@ -91,7 +91,7 @@ export default function ChatBox(props) {
                 type="text"
                 placeholder="type message"
               />
-              <button type="submit">Send</button>
+              <button className="button-chatbox" type="submit">ارسال</button>
             </form>
           </div>
         </div>

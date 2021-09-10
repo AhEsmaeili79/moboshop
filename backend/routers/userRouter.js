@@ -12,7 +12,7 @@ userRouter.get(
   expressAsyncHandler(async (req, res) => {
     const topSellers = await User.find({ isSeller: true })
       .sort({ 'seller.rating': -1 })
-      .limit(3);
+      .limit(5);
     res.send(topSellers);
   })
 );
@@ -20,7 +20,7 @@ userRouter.get(
 userRouter.get(
   '/seed',
   expressAsyncHandler(async (req, res) => {
-    // await User.remove({});
+   
     const createdUsers = await User.insertMany(data.users);
     res.send({ createdUsers });
   })
@@ -43,7 +43,7 @@ userRouter.post(
         return;
       }
     }
-    res.status(401).send({ message: 'Invalid email or password' });
+    res.status(401).send({ message: 'ایمیل یا کلمه عبور نا معتبر است' });
   })
 );
 
@@ -74,7 +74,7 @@ userRouter.get(
     if (user) {
       res.send(user);
     } else {
-      res.status(404).send({ message: 'User Not Found' });
+      res.status(404).send({ message: 'کاربر پیدا نشد' });
     }
   })
 );
@@ -126,13 +126,13 @@ userRouter.delete(
     const user = await User.findById(req.params.id);
     if (user) {
       if (user.email === 'admin@example.com') {
-        res.status(400).send({ message: 'Can Not Delete Admin User' });
+        res.status(400).send({ message: 'نمیتوان مدیر سایت را حذف کرد ' });
         return;
       }
       const deleteUser = await user.remove();
-      res.send({ message: 'User Deleted', user: deleteUser });
+      res.send({ message: 'کاربر حذف شد', user: deleteUser });
     } else {
-      res.status(404).send({ message: 'User Not Found' });
+      res.status(404).send({ message: 'کاربر پیدا نشد' });
     }
   })
 );
@@ -148,11 +148,10 @@ userRouter.put(
       user.email = req.body.email || user.email;
       user.isSeller = Boolean(req.body.isSeller);
       user.isAdmin = Boolean(req.body.isAdmin);
-      // user.isAdmin = req.body.isAdmin || user.isAdmin;
       const updatedUser = await user.save();
-      res.send({ message: 'User Updated', user: updatedUser });
+      res.send({ message: 'کاربر تغییر یافت', user: updatedUser });
     } else {
-      res.status(404).send({ message: 'User Not Found' });
+      res.status(404).send({ message: 'کاربر پیدا نشد ' });
     }
   })
 );

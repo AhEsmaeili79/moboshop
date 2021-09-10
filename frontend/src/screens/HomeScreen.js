@@ -27,17 +27,18 @@ export default function HomeScreen() {
   }, [dispatch]);
   return (
     <div>
-      <h2>Top Sellers</h2>
+      <h1></h1>
       {loadingSellers ? (
         <LoadingBox></LoadingBox>
       ) : errorSellers ? (
         <MessageBox variant="danger">{errorSellers}</MessageBox>
       ) : (
         <>
-          {sellers.length === 0 && <MessageBox>No Seller Found</MessageBox>}
+        <div className="slider-seller">
+          {sellers.length === 0 && <MessageBox>فروشنده ای پیدا نشد</MessageBox>}
           <Carousel showArrows autoPlay showThumbs={false}>
             {sellers.map((seller) => (
-              <div key={seller._id}>
+              <div className="slide-img" key={seller._id}>
                 <Link to={`/seller/${seller._id}`}>
                   <img src={seller.seller.logo} alt={seller.seller.name} />
                   <p className="legend">{seller.seller.name}</p>
@@ -45,17 +46,18 @@ export default function HomeScreen() {
               </div>
             ))}
           </Carousel>
+          </div>
         </>
       )}
-      <h2>Featured Products</h2>
+    <div className='background'><h2 className="new-product">جدیدترین ها</h2>
       {loading ? (
         <LoadingBox></LoadingBox>
       ) : error ? (
         <MessageBox variant="danger">{error}</MessageBox>
       ) : (
         <>
-          {products.length === 0 && <MessageBox>No Product Found</MessageBox>}
-          <div className="row center">
+          {products.length === 0 && <MessageBox>محصولی پیدا نشد</MessageBox>}
+          <div className="row center ">
             {products.map((product) => (
               <Product key={product._id} product={product}></Product>
             ))}
@@ -63,5 +65,6 @@ export default function HomeScreen() {
         </>
       )}
     </div>
+  </div>
   );
 }

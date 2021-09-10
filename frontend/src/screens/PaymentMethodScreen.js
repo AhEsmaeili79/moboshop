@@ -21,39 +21,28 @@ export default function PaymentMethodScreen(props) {
       <CheckoutSteps step1 step2 step3></CheckoutSteps>
       <form className="form" onSubmit={submitHandler}>
         <div>
-          <h1>Payment Method</h1>
+          <h1>روش پرداخت</h1>
         </div>
         <div>
           <div>
             <input
               type="radio"
-              id="paypal"
-              value="PayPal"
+              id="zarinpal"
+              value="zarinpal "
               name="paymentMethod"
               required
               checked
               onChange={(e) => setPaymentMethod(e.target.value)}
             ></input>
-            <label htmlFor="paypal">PayPal</label>
+            <label htmlFor="zarinpal">زرین پال</label>
           </div>
         </div>
         <div>
-          <div>
-            <input
-              type="radio"
-              id="stripe"
-              value="Stripe"
-              name="paymentMethod"
-              required
-              onChange={(e) => setPaymentMethod(e.target.value)}
-            ></input>
-            <label htmlFor="stripe">Stripe</label>
-          </div>
         </div>
         <div>
           <label />
           <button className="primary" type="submit">
-            Continue
+            ادامه
           </button>
         </div>
       </form>

@@ -60,26 +60,26 @@ export default function SearchScreen(props) {
         ) : error ? (
           <MessageBox variant="danger">{error}</MessageBox>
         ) : (
-          <div>{products.length} Results</div>
+          <div>  {products.length} نتیجه پیدا شد</div>
         )}
         <div>
-          Sort by{' '}
+          دسته بندی بر اساس{' '}
           <select
             value={order}
             onChange={(e) => {
               props.history.push(getFilterUrl({ order: e.target.value }));
             }}
           >
-            <option value="newest">Newest Arrivals</option>
-            <option value="lowest">Price: Low to High</option>
-            <option value="highest">Price: High to Low</option>
-            <option value="toprated">Avg. Customer Reviews</option>
+            <option value="newest">تازه ها</option>
+            <option value="lowest">قیمت: کم به زیاد</option>
+            <option value="highest">قیمت: زیاد به  کم</option>
+            <option value="toprated">پیشنهاد کاربران</option>
           </select>
         </div>
       </div>
       <div className="row top">
-        <div className="col-1">
-          <h3>Department</h3>
+        <div className="col-1 search-category">
+          <h3>برند</h3>
           <div>
             {loadingCategories ? (
               <LoadingBox></LoadingBox>
@@ -92,7 +92,7 @@ export default function SearchScreen(props) {
                     className={'all' === category ? 'active' : ''}
                     to={getFilterUrl({ category: 'all' })}
                   >
-                    Any
+                    همه
                   </Link>
                 </li>
                 {categories.map((c) => (
@@ -109,7 +109,7 @@ export default function SearchScreen(props) {
             )}
           </div>
           <div>
-            <h3>Price</h3>
+            <h3>قیمت</h3>
             <ul>
               {prices.map((p) => (
                 <li key={p.name}>
@@ -126,7 +126,7 @@ export default function SearchScreen(props) {
             </ul>
           </div>
           <div>
-            <h3>Avg. Customer Review</h3>
+            <h3>پیشنهاد کاربران</h3>
             <ul>
               {ratings.map((r) => (
                 <li key={r.name}>
@@ -134,7 +134,7 @@ export default function SearchScreen(props) {
                     to={getFilterUrl({ rating: r.rating })}
                     className={`${r.rating}` === `${rating}` ? 'active' : ''}
                   >
-                    <Rating caption={' & up'} rating={r.rating}></Rating>
+                    <Rating  rating={r.rating} caption={'و بالا تر'} ></Rating>
                   </Link>
                 </li>
               ))}
@@ -149,7 +149,7 @@ export default function SearchScreen(props) {
           ) : (
             <>
               {products.length === 0 && (
-                <MessageBox>No Product Found</MessageBox>
+                <MessageBox>محصولی پیدا نشد.</MessageBox>
               )}
               <div className="row center">
                 {products.map((product) => (

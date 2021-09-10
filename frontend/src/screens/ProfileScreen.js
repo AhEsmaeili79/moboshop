@@ -43,7 +43,7 @@ export default function ProfileScreen() {
     e.preventDefault();
     // dispatch update profile
     if (password !== confirmPassword) {
-      alert('Password and Confirm Password Are Not Matched');
+      alert('رمز عبور و تایید رمز عبور شباهت ندارد');
     } else {
       dispatch(
         updateUserProfile({
@@ -62,7 +62,7 @@ export default function ProfileScreen() {
     <div>
       <form className="form" onSubmit={submitHandler}>
         <div>
-          <h1>User Profile</h1>
+          <h1>مشخصات کاربر</h1>
         </div>
         {loading ? (
           <LoadingBox></LoadingBox>
@@ -76,76 +76,76 @@ export default function ProfileScreen() {
             )}
             {successUpdate && (
               <MessageBox variant="success">
-                Profile Updated Successfully
+               مشخصات تغییر یافت
               </MessageBox>
             )}
             <div>
-              <label htmlFor="name">Name</label>
+              <label htmlFor="name">نام</label>
               <input
                 id="name"
                 type="text"
-                placeholder="Enter name"
+                placeholder="نام را وارد کنید"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               ></input>
             </div>
             <div>
-              <label htmlFor="email">Email</label>
+              <label htmlFor="email">ایمیل</label>
               <input
                 id="email"
                 type="email"
-                placeholder="Enter email"
+                placeholder="ایمیل را وارد کنید "
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               ></input>
             </div>
             <div>
-              <label htmlFor="password">Password</label>
+              <label htmlFor="password">کلمه عبور </label>
               <input
                 id="password"
                 type="password"
-                placeholder="Enter password"
+                placeholder="کلمه عبور را وارد کنید "
                 onChange={(e) => setPassword(e.target.value)}
               ></input>
             </div>
             <div>
-              <label htmlFor="confirmPassword">confirm Password</label>
+              <label htmlFor="confirmPassword">تایید کلمه عبور </label>
               <input
                 id="confirmPassword"
                 type="password"
-                placeholder="Enter confirm password"
+                placeholder="لطفا کلمه عبور را دوباره وارد کنید "
                 onChange={(e) => setConfirmPassword(e.target.value)}
               ></input>
             </div>
             {user.isSeller && (
               <>
-                <h2>Seller</h2>
+                <h2>فروشنده</h2>
                 <div>
-                  <label htmlFor="sellerName">Seller Name</label>
+                  <label htmlFor="sellerName">نام فروشنده </label>
                   <input
                     id="sellerName"
                     type="text"
-                    placeholder="Enter Seller Name"
+                    placeholder="نام فروشنده را وارد کنید"
                     value={sellerName}
                     onChange={(e) => setSellerName(e.target.value)}
                   ></input>
                 </div>
                 <div>
-                  <label htmlFor="sellerLogo">Seller Logo</label>
+                  <label htmlFor="sellerLogo">لوگوی فروشنده را وارد کنید </label>
                   <input
                     id="sellerLogo"
                     type="text"
-                    placeholder="Enter Seller Logo"
+                    placeholder="لطفا لوگوی فروشنده را با لینک وارد کنید "
                     value={sellerLogo}
                     onChange={(e) => setSellerLogo(e.target.value)}
                   ></input>
                 </div>
                 <div>
-                  <label htmlFor="sellerDescription">Seller Description</label>
+                  <label htmlFor="sellerDescription">معرفی  فروشنده </label>
                   <input
                     id="sellerDescription"
                     type="text"
-                    placeholder="Enter Seller Description"
+                    placeholder="معرفی فروشنده"
                     value={sellerDescription}
                     onChange={(e) => setSellerDescription(e.target.value)}
                   ></input>
@@ -155,7 +155,7 @@ export default function ProfileScreen() {
             <div>
               <label />
               <button className="primary" type="submit">
-                Update
+                ثبت
               </button>
             </div>
           </>
