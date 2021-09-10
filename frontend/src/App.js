@@ -266,11 +266,11 @@ function App() {
               <h3>موبوشاپ</h3>
               </Link>
               <ul className="socials">
-                <li><a><i className="fa fa-facebook"></i></a></li>
-                <li><a><i className="fa fa-twitter "> </i></a></li>
-                <li><a><i className="fab fa-youtube "></i></a></li>
-                <li><a><i className="fa fa-instagram "></i></a></li>
-                <li><a><i className="fa fa-linkedin-square "></i></a></li>
+                <li><a href="https://www.facebook.com"><i className="fa fa-facebook"></i></a></li>
+                <li><a href="https://www.twitter.com"><i className="fa fa-twitter "> </i></a></li>
+                <li><a href="https://www.youtube.com"><i className="fab fa-youtube "></i></a></li>
+                <li><a href="https://www.instagram.com"><i className="fa fa-instagram "></i></a></li>
+                <li><a href="https://www.linkedin.com"><i className="fa fa-linkedin-square "></i></a></li>
               </ul>
           </div>
           <div className="footer-bottom"><p>.<a href="https://qom.tvu.ac.ir/fa/page/923" target="_blank"> University Of Qom</a> Project &copy;2021 Moboshop</p><p> Powered by <a  href="https://github.com/amirhosseine13579/" target="_blank">Amirhossein</a></p> </div>
