@@ -85,7 +85,7 @@ export const payOrderEmailTemplate = (order) => {
     <tr>
     <td>${item.name}</td>
     <td align="center">${item.qty}</td>
-    <td align="right"> ریال ${item.price.toFixed(2)}</td>
+    <td align="right"> تومان ${item.price.toFixed(2)}</td>
     </tr>
   `
     )
@@ -94,19 +94,19 @@ export const payOrderEmailTemplate = (order) => {
   <tfoot>
   <tr>
   <td colspan="2">قیمت موارد :</td>
-  <td align="right"> ریال${order.itemsPrice.toFixed(2)}</td>
+  <td align="right"> تومان${order.itemsPrice.toFixed(2)}</td>
   </tr>
   <tr>
   <td colspan="2">هزینه مالیات :</td>
-  <td align="right"> ریال${order.taxPrice.toFixed(2)}</td>
+  <td align="right"> تومان${order.taxPrice.toFixed(2)}</td>
   </tr>
   <tr>
   <td colspan="2">هزینه ارسال :</td>
-  <td align="right"> ریال${order.shippingPrice.toFixed(2)}</td>
+  <td align="right"> تومان${order.shippingPrice.toFixed(2)}</td>
   </tr>
   <tr>
   <td colspan="2"><strong>جمع کل :</strong></td>
-  <td align="right"><strong>ریال ${order.totalPrice.toFixed(2)}</strong></td>
+  <td align="right"><strong>تومان ${order.totalPrice.toFixed(2)}</strong></td>
   </tr>
   <tr>
   <td colspan="2">روش پرداخت :</td>
