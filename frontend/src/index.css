@@ -314,6 +314,7 @@ aside.open li{
     border-radius: 5px;
     padding:  0 10px;
     width: 340px;
+    margin: auto;
   }
   .card.card-body.incart-screen{
     width: 258px;
