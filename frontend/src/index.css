@@ -395,8 +395,8 @@ aside.open li{
     margin-left: -1px;
     width:80px;
   }
-  .primary{ margin-top: -1px;
-    margin-left: -20px;
+  .primary{ 
+    margin-top: -1px;
   }
   
   a.brand{
