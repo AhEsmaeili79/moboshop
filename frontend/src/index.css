@@ -636,6 +636,10 @@ button.close-sidebar {
   color: #dbbcff;
 }
 
+.categories a{
+  color: #fff;
+}
+
 /* Image */
 img {
   border-radius: 0.5rem;
