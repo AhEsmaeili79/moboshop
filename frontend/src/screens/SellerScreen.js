@@ -55,7 +55,7 @@ export default function SellerScreen(props) {
                 ></Rating>
               </li>
               <li>
-                <a href={`mailto:${user.email}`}>تماس با فروشنده</a>
+                <a href={`https://${user.seller.name}.com`}>تماس با فروشنده</a>
               </li>
               
               <li>{user.seller.description}</li>
