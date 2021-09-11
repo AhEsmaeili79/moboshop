@@ -614,9 +614,12 @@ aside li {
   display: flex;
   justify-content: space-between;
   padding: 1rem;
-  border: #000000 solid 1px;
+  border: #ffffff solid 1px;
   border-radius: 10px;
   margin: 5px;
+}
+.aside a{
+ color: #fff;
 }
 .aslide li 
 button.close-sidebar {
@@ -860,9 +863,7 @@ div.row{
   padding: 0 20px;
   background-color: rgba(255, 255, 255, 0.664);
 }
-.category li{
- color: #fff;
-}
+
 .search-category ul{
   text-align: center;
   margin: 10px auto;
