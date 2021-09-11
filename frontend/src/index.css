@@ -1,4 +1,80 @@
 
+@font-face {
+  font-family: 'iransans';
+  src: url('http://bayanbox.ir/download/5602560474888085389/IRANSansWeb.woff') format('woff'); 
+  src: url('http://bayanbox.ir/download/2180555625540261471/IRANSansWeb.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+	
+@font-face {
+  font-family: 'iransans';
+  src: url('http://bayanbox.ir/download/5602560474888085389/IRANSansWeb.woff') format('woff'); 
+  src: url('http://bayanbox.ir/download/2180555625540261471/IRANSansWeb.woff2') format('woff2');
+  font-weight: bold;
+  font-style: normal;
+} 
+
+@font-face {
+  font-family: Vazir;
+  src: url('https://cdn.rawgit.com/rastikerdar/vazir-font/v19.0.0/dist/Vazir.eot');
+  src: url('https://cdn.rawgit.com/rastikerdar/vazir-font/v19.0.0/dist/Vazir.eot?#iefix') format('embedded-opentype'),
+       url('https://cdn.rawgit.com/rastikerdar/vazir-font/v19.0.0/dist/Vazir.woff2') format('woff2'),
+       url('https://cdn.rawgit.com/rastikerdar/vazir-font/v19.0.0/dist/Vazir.woff') format('woff'),
+       url('https://cdn.rawgit.com/rastikerdar/vazir-font/v19.0.0/dist/Vazir.ttf') format('truetype');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: Vazir;
+  src: url('https://cdn.rawgit.com/rastikerdar/vazir-font/v19.0.0/dist/Vazir-Bold.eot');
+  src: url('https://cdn.rawgit.com/rastikerdar/vazir-font/v19.0.0/dist/Vazir-Bold.eot?#iefix') format('embedded-opentype'),
+       url('https://cdn.rawgit.com/rastikerdar/vazir-font/v19.0.0/dist/Vazir-Bold.woff2') format('woff2'),
+       url('https://cdn.rawgit.com/rastikerdar/vazir-font/v19.0.0/dist/Vazir-Bold.woff') format('woff'),
+       url('https://cdn.rawgit.com/rastikerdar/vazir-font/v19.0.0/dist/Vazir-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: Vazir;
+  src: url('https://cdn.rawgit.com/rastikerdar/vazir-font/v19.0.0/dist/Vazir-Light.eot');
+  src: url('https://cdn.rawgit.com/rastikerdar/vazir-font/v19.0.0/dist/Vazir-Light.eot?#iefix') format('embedded-opentype'),
+       url('https://cdn.rawgit.com/rastikerdar/vazir-font/v19.0.0/dist/Vazir-Light.woff2') format('woff2'),
+       url('https://cdn.rawgit.com/rastikerdar/vazir-font/v19.0.0/dist/Vazir-Light.woff') format('woff'),
+       url('https://cdn.rawgit.com/rastikerdar/vazir-font/v19.0.0/dist/Vazir-Light.ttf') format('truetype');
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: Vazir;
+  src: url('https://cdn.rawgit.com/rastikerdar/vazir-font/v19.0.0/dist/Vazir-Medium.eot');
+  src: url('https://cdn.rawgit.com/rastikerdar/vazir-font/v19.0.0/dist/Vazir-Medium.eot?#iefix') format('embedded-opentype'),
+       url('https://cdn.rawgit.com/rastikerdar/vazir-font/v19.0.0/dist/Vazir-Medium.woff2') format('woff2'),
+       url('https://cdn.rawgit.com/rastikerdar/vazir-font/v19.0.0/dist/Vazir-Medium.woff') format('woff'),
+       url('https://cdn.rawgit.com/rastikerdar/vazir-font/v19.0.0/dist/Vazir-Medium.ttf') format('truetype');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: Vazir;
+  src: url('https://cdn.rawgit.com/rastikerdar/vazir-font/v19.0.0/dist/Vazir-Thin.eot');
+  src: url('https://cdn.rawgit.com/rastikerdar/vazir-font/v19.0.0/dist/Vazir-Thin.eot?#iefix') format('embedded-opentype'),
+       url('https://cdn.rawgit.com/rastikerdar/vazir-font/v19.0.0/dist/Vazir-Thin.woff2') format('woff2'),
+       url('https://cdn.rawgit.com/rastikerdar/vazir-font/v19.0.0/dist/Vazir-Thin.woff') format('woff'),
+       url('https://cdn.rawgit.com/rastikerdar/vazir-font/v19.0.0/dist/Vazir-Thin.ttf') format('truetype');
+  font-weight: 100;
+}
+
+@font-face {
+  font-family: Vazir;
+  src: url('https://cdn.rawgit.com/rastikerdar/vazir-font/v19.0.0/dist/Vazir-Black.eot');
+  src: url('https://cdn.rawgit.com/rastikerdar/vazir-font/v19.0.0/dist/Vazir-Black.eot?#iefix') format('embedded-opentype'),
+       url('https://cdn.rawgit.com/rastikerdar/vazir-font/v19.0.0/dist/Vazir-Black.woff2') format('woff2'),
+       url('https://cdn.rawgit.com/rastikerdar/vazir-font/v19.0.0/dist/Vazir-Black.woff') format('woff'),
+       url('https://cdn.rawgit.com/rastikerdar/vazir-font/v19.0.0/dist/Vazir-Black.ttf') format('truetype');
+  font-weight: 900;
+}
+
 
 html {
   font-size: 62.5%; /* 16px x 62.5 = 10px = 1rem */
@@ -15,7 +91,7 @@ body {
   margin: 0;
   height: 100vh;
   font-size: 1.6rem;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: Vazir,iransans,-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
   'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
   sans-serif;
 -webkit-font-smoothing: antialiased;
@@ -96,7 +172,6 @@ footer.row.center{
   margin: 10px auto;
   line-height: 28px ;
   font-size: 14px;
-  font-family: 'Open Sans';
   color: #fff;
 }
 
@@ -502,10 +577,7 @@ button {
   border-radius: 0.5rem;
   border: 0.1rem #a4a4a4 solid;
   font-size: 1.6rem;
-  font-family:  -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-  sans-serif;
--webkit-font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
 -moz-osx-font-smoothing: grayscale;
   text-align: center;
 }
@@ -757,9 +829,6 @@ form {
 .form button{
   margin-bottom: 10px;
   font-size: large;
-  font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-  sans-serif;
 }
 .form input{
   background: #dbdadabd;
@@ -911,9 +980,6 @@ a.active{
   border-radius: 0.5rem;
   border: 0.1rem #a4a4a4 solid;
   font-size: 1.6rem;
-  font-family: Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 .pagination a.active {
   font-weight: bold;
