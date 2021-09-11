@@ -1,3 +1,5 @@
+
+
 html {
   font-size: 62.5%; /* 16px x 62.5 = 10px = 1rem */
   box-sizing: border-box;
@@ -86,6 +88,7 @@ footer.row.center{
   text-transform: capitalize;
   line-height: 3rem;
   font-weight: bold;
+  color: #f3f3f3;
 }
 
 .footer-content p{
@@ -583,7 +586,7 @@ aside {
   position: fixed;
   width: 30rem;
   height: 100%;
-  background-color: #f1e4ffde;
+  background-color: #525252b4;
   z-index: 1000;
   transform: translateX(40rem);
   transition: all 0.5s;
@@ -622,10 +625,12 @@ button.close-sidebar {
 
 .category {
   border: none;
+  
 }
 .categories{margin-left: 20px;}
 .category {
   text-align: center;
+  color: #dbbcff;
 }
 
 /* Image */

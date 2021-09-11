@@ -262,7 +262,7 @@ function App() {
         <footer className="row center ">
           {userInfo && !userInfo.isAdmin && <ChatBox userInfo={userInfo} />}
             <div className="footer-content">
-              <Link className="brand" to="/">
+              <Link  to="/">
               <h3>موبوشاپ</h3>
               </Link>
               <ul className="socials">
@@ -273,7 +273,7 @@ function App() {
                 <li><a href="https://www.linkedin.com"><i className="fa fa-linkedin-square "></i></a></li>
               </ul>
           </div>
-          <div className="footer-bottom"><p>.<a href="https://qom.tvu.ac.ir/fa/page/923" target="_blank"> University Of Qom</a> Project &copy;2021 Moboshop</p><p> Powered by <a  href="https://github.com/amirhosseine13579/" target="_blank">Amirhossein</a></p> </div>
+          <div className="footer-bottom"><p><a href="https://qom.tvu.ac.ir/fa/page/923" target="_blank"> University Of Qom</a> Project &copy;2021 Moboshop</p><p> Powered by <a  href="https://github.com/amirhosseine13579/" target="_blank">Amirhossein</a></p> </div>
         </footer>
       </div>
     </BrowserRouter>
