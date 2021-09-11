@@ -667,7 +667,6 @@ img.medium {
 .card-body {
   padding: 1rem;
   text-align: center;
-  margin-left: 30px;
 }
 .card-body > * {
   margin-bottom: 0.5rem;
