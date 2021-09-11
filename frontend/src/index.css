@@ -114,6 +114,7 @@ body img{
   grid-template-columns: 1fr;
   grid-template-rows: 5rem 1fr 5rem;
   height: 100%;
+  font-family: Vazir,iransans;
 }
 header {
   grid-area: header;
@@ -577,6 +578,7 @@ button {
   border-radius: 0.5rem;
   border: 0.1rem #a4a4a4 solid;
   font-size: 1.6rem;
+  font-family: Vazir,iransans;
   -webkit-font-smoothing: antialiased;
 -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -674,6 +676,7 @@ button.open-sidebar {
   color: #ffffff;
   cursor: pointer;
   margin-right: 10px;
+  height: 47px;
 }
 button.open-sidebar:hover {
   border-color: #ffffff;
@@ -875,6 +878,7 @@ form {
 
 div.row{
   margin-top: 20px;
+  color: #000;
 }
 /* Checkout Steps */
 .checkout-steps > div {
