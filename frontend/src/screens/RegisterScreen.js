@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { register } from '../actions/userActions';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
-import PhoneInput from "react-phone-number-input";
 
 
 export default function RegisterScreen(props) {
