@@ -42,7 +42,9 @@ export default function SigninScreen(props) {
             placeholder="ایمیل را وارد کنید"
             required
             onChange={(e) => setEmail(e.target.value)}
+            oninvalid="this.setCustomValidity('Username cannot be blank')"
           ></input>
+         
         </div>
         <div>
           <label htmlFor="password">کلمه عبور </label>

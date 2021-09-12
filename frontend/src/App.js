@@ -31,6 +31,7 @@ import MapScreen from './screens/MapScreen';
 import DashboardScreen from './screens/DashboardScreen';
 import SupportScreen from './screens/SupportScreen';
 import ChatBox from './components/ChatBox';
+import Phonenumber from './components/Phonenumber';
 
 function App() {
   const cart = useSelector((state) => state.cart);
@@ -260,7 +261,7 @@ function App() {
           <Route path="/" component={HomeScreen} exact></Route>
         </main>
         <footer className="row center ">
-          {userInfo && !userInfo.isAdmin && <ChatBox userInfo={userInfo} />}
+          {userInfo && !userInfo.isAdmin && <ChatBox className="chatbox-button" userInfo={userInfo} />}
             <div className="footer-content">
               <Link  to="/">
               <h3>موبوشاپ</h3>

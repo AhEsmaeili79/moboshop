@@ -20,14 +20,13 @@ export default function HomeScreen() {
     error: errorSellers,
     users: sellers,
   } = userTopSellersList;
-
   useEffect(() => {
     dispatch(listProducts({}));
     dispatch(listTopSellers());
   }, [dispatch]);
   return (
-    <div>
-      <h1></h1>
+    <div className="home-section">
+      <h1 className="heading-1"></h1>
       {loadingSellers ? (
         <LoadingBox></LoadingBox>
       ) : errorSellers ? (
@@ -49,6 +48,7 @@ export default function HomeScreen() {
           </div>
         </>
       )}
+      
     <div className='background'><h2 className="new-product">جدیدترین ها</h2>
       {loading ? (
         <LoadingBox></LoadingBox>

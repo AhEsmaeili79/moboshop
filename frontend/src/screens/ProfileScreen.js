@@ -1,3 +1,4 @@
+import { set } from 'mongoose';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { detailsUser, updateUserProfile } from '../actions/userActions';
@@ -8,6 +9,7 @@ import { USER_UPDATE_PROFILE_RESET } from '../constants/userConstants';
 export default function ProfileScreen() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [phonenumber, setPhonenumber] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [sellerName, setSellerName] = useState('');
@@ -32,6 +34,7 @@ export default function ProfileScreen() {
     } else {
       setName(user.name);
       setEmail(user.email);
+      setPhonenumber(user.phonenumber)
       if (user.seller) {
         setSellerName(user.seller.name);
         setSellerLogo(user.seller.logo);
@@ -50,6 +53,7 @@ export default function ProfileScreen() {
           userId: user._id,
           name,
           email,
+          phonenumber,
           password,
           sellerName,
           sellerLogo,
@@ -87,6 +91,16 @@ export default function ProfileScreen() {
                 placeholder="نام را وارد کنید"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
+              ></input>
+            </div>
+            <div>
+              <label htmlFor="phonenumber"> شماره تلفن همراه </label>
+              <input
+                id="tel"
+                placeholder="شماره تلفن همراه را وارد کنید "
+                value={phonenumber}
+                required
+                onChange={(e) => setPhonenumber(e.target.value)}
               ></input>
             </div>
             <div>
