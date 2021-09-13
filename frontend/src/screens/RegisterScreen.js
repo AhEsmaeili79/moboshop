@@ -17,6 +17,7 @@ export default function RegisterScreen(props) {
     ? props.location.search.split('=')[1]
     : '/';
 
+
     
   const userRegister = useSelector((state) => state.userRegister);
   const { userInfo, loading, error } = userRegister;

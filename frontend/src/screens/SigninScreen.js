@@ -66,7 +66,7 @@ export default function SigninScreen(props) {
           <label />
           <div>
             ثبت نام نکرده اید ؟{' '}
-            <Link to={`/register?redirect=${redirect}` }>
+            <Link to={`/register?redirect=${redirect}`}>
                ثبت نام  
             </Link>
           </div>

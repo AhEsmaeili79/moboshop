@@ -5,11 +5,6 @@ import data from '../data.js';
 import User from '../models/userModel.js';
 import { generateToken, isAdmin, isAuth } from '../utils.js';
 
-function padLeadingZeros(num, size=10) {
-  var s = num+"";
-  while (s.length < size) s = "0" + s;
-  return s;
-}
 
 const userRouter = express.Router();
 
@@ -58,14 +53,13 @@ userRouter.post(
     const userdefind = await User.findOne({ email: req.body.email });
     const phonenumberdefind = await User.findOne({ phonenumber: req.body.phonenumber });
     const phonenumberlength = req.body.phonenumber.toString().length;
-    const zerobefornumber = req.body.phonenumber;
     if (!userdefind) {
       if(!phonenumberdefind){
         if(phonenumberlength == 10){
           const user = new User({
             name: req.body.name,
             email: req.body.email,
-            phonenumber: '0' + req.body.phonenumber,
+            phonenumber: req.body.phonenumber,
             password: bcrypt.hashSync(req.body.password, 8),
           });
           const createdUser = await user.save();
@@ -77,7 +71,6 @@ userRouter.post(
             isAdmin: createdUser.isAdmin,
             isSeller: user.isSeller,
             token: generateToken(createdUser),
-            phonenumber = padLeadingZeros(zerobefornumber,10)
           });
           return;
         }
