@@ -5,6 +5,12 @@ import data from '../data.js';
 import User from '../models/userModel.js';
 import { generateToken, isAdmin, isAuth } from '../utils.js';
 
+function padLeadingZeros(num, size=10) {
+  var s = num+"";
+  while (s.length < size) s = "0" + s;
+  return s;
+}
+
 const userRouter = express.Router();
 
 userRouter.get(
@@ -43,27 +49,49 @@ userRouter.post(
         return;
       }
     }
-    res.status(401).send({ message: 'ایمیل یا کلمه عبور نا معتبر است' });
   })
 );
 
 userRouter.post(
   '/register',
   expressAsyncHandler(async (req, res) => {
-    const user = new User({
-      name: req.body.name,
-      email: req.body.email,
-      password: bcrypt.hashSync(req.body.password, 8),
-    });
-    const createdUser = await user.save();
-    res.send({
-      _id: createdUser._id,
-      name: createdUser.name,
-      email: createdUser.email,
-      isAdmin: createdUser.isAdmin,
-      isSeller: user.isSeller,
-      token: generateToken(createdUser),
-    });
+    const userdefind = await User.findOne({ email: req.body.email });
+    const phonenumberdefind = await User.findOne({ phonenumber: req.body.phonenumber });
+    const phonenumberlength = req.body.phonenumber.toString().length;
+    const zerobefornumber = req.body.phonenumber;
+    if (!userdefind) {
+      if(!phonenumberdefind){
+        if(phonenumberlength == 10){
+          const user = new User({
+            name: req.body.name,
+            email: req.body.email,
+            phonenumber: '0' + req.body.phonenumber,
+            password: bcrypt.hashSync(req.body.password, 8),
+          });
+          const createdUser = await user.save();
+          res.send({
+            _id: createdUser._id,
+            name: createdUser.name,
+            phonenumber: createdUser.phonenumber,
+            email: createdUser.email,
+            isAdmin: createdUser.isAdmin,
+            isSeller: user.isSeller,
+            token: generateToken(createdUser),
+            phonenumber = padLeadingZeros(zerobefornumber,10)
+          });
+          return;
+        }
+        else{
+          res.status(401).send({ message: '(بدون صفر)شماره تلفن باید ده رقم باشد' });
+        }
+      }
+      else{
+        res.status(401).send({ message: 'شماره تلفن همراه قبلا استفاده شده است' });
+      }
+    }
+    else{
+      res.status(401).send({ message: 'ایمیل قبلا استفاده شده است' });
+    }
   })
 );
 
@@ -83,27 +111,35 @@ userRouter.put(
   isAuth,
   expressAsyncHandler(async (req, res) => {
     const user = await User.findById(req.user._id);
-    if (user) {
-      user.name = req.body.name || user.name;
-      user.email = req.body.email || user.email;
-      if (user.isSeller) {
-        user.seller.name = req.body.sellerName || user.seller.name;
-        user.seller.logo = req.body.sellerLogo || user.seller.logo;
-        user.seller.description =
-          req.body.sellerDescription || user.seller.description;
+    const phonenumberlength = req.body.phonenumber.toString().length;
+    if(phonenumberlength == 10){
+      if (user) {
+        user.name = req.body.name || user.name;
+        user.email = req.body.email || user.email;
+        user.phonenumber = req.body.phonenumber || user.phonenumber;
+        if (user.isSeller) {
+          user.seller.name = req.body.sellerName || user.seller.name;
+          user.seller.logo = req.body.sellerLogo || user.seller.logo;
+          user.seller.description =
+            req.body.sellerDescription || user.seller.description;
+        }
+        if (req.body.password) {
+          user.password = bcrypt.hashSync(req.body.password, 8);
+        }
+        const updatedUser = await user.save();
+        res.send({
+          _id: updatedUser._id,
+          name: updatedUser.name,
+          email: updatedUser.email,
+          phonenumber: updatedUser.phonenumber,
+          isAdmin: updatedUser.isAdmin,
+          isSeller: user.isSeller,
+          token: generateToken(updatedUser),
+        });
       }
-      if (req.body.password) {
-        user.password = bcrypt.hashSync(req.body.password, 8);
-      }
-      const updatedUser = await user.save();
-      res.send({
-        _id: updatedUser._id,
-        name: updatedUser.name,
-        email: updatedUser.email,
-        isAdmin: updatedUser.isAdmin,
-        isSeller: user.isSeller,
-        token: generateToken(updatedUser),
-      });
+    }
+    else{
+      res.status(401).send({ message: '(بدون صفر)شماره تلفن باید ده رقم باشد' });
     }
   })
 );
@@ -146,6 +182,7 @@ userRouter.put(
     if (user) {
       user.name = req.body.name || user.name;
       user.email = req.body.email || user.email;
+      user.phonenumber = req.body.phonenumber || user.phonenumber;
       user.isSeller = Boolean(req.body.isSeller);
       user.isAdmin = Boolean(req.body.isAdmin);
       const updatedUser = await user.save();
