@@ -448,7 +448,8 @@ aside.open li{
     height: 200px;
   }
   input#phonenumber {
-    width: 215px;
+    width: 210px;
+    margin: auto;
   }
   p.legend{
     width: -70%;
@@ -494,7 +495,7 @@ aside.open li{
   }
   form.form{
     width: 310px;
-    margin-bottom: 30px;
+    margin: 30px auto;
     
   }
   form.form button.primary{

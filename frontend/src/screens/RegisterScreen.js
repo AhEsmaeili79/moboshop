@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { register } from '../actions/userActions';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
-import PhoneInput from "react-phone-number-input";
 
 
 export default function RegisterScreen(props) {
@@ -55,7 +54,7 @@ export default function RegisterScreen(props) {
             onChange={(e) => setName(e.target.value)}
           ></input>
         </div>
-        <div className="phonenumber">
+        <div >
           <label htmlFor="phonenumber" > شماره تلفن همراه </label>
           <div onsubmit="process(event)">
                 <input id="phonenumber" type="tel" name="phone" oninvalid="this.setCustomValidity(' لطفا تلفن همراه را وارد کنید ')"
