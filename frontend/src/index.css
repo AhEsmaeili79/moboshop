@@ -434,7 +434,7 @@ aside.open li{
  
 @media (max-width:500px) {
   body{
-    background-size:1100 auto;
+    background-size:1300 auto;
     background-attachment: fixed;
   }
   .active{ font-size: 1.3rem;}
