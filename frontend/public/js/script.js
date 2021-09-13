@@ -14,6 +14,8 @@ $(document).ready(function() {
                 e.target.setCustomValidity("لطفا شماره تلفن همراه را وارد کنید");break;
                 case 'name' : 
                 e.target.setCustomValidity("لطفا نام را وارد کنید");break;
+                case 'confirmPassword' : 
+                e.target.setCustomValidity("لطفا کلمه عبور را دوباره وارد کنید");break;
             default : e.target.setCustomValidity("");break;
     
             }
