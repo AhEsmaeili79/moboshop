@@ -57,33 +57,31 @@ function App() {
     <BrowserRouter>
       <div className="grid-container">
         <header className="row">
-          <div className="brand-slider">
-            <button
-              type="button"
-              className="open-sidebar"
-              onClick={() => setSidebarIsOpen(true)}
-            >
-              <i className="fa fa-bars"></i>
-            </button>
-            <Link className="brand" to="/">
-              موبوشاپ
-            </Link>
-          </div>
-          
-          <div className="search">
-            <Route
-              render={({ history }) => (
-                <SearchBox history={history}></SearchBox>
-              )}
-            ></Route>
-          </div>
           <div className='menu'>
-          <Link className="singin-button" to="/cart">
-              سبد خرید
-              {cartItems.length > 0 && (
-                <span className="badge">{cartItems.length}</span>
-              )}
-            </Link>
+                {/* <ul className="categories">
+                  {loadingCategories ? (
+                    <LoadingBox></LoadingBox>
+                  ) : errorCategories ? (
+                    <MessageBox variant="danger">{errorCategories}</MessageBox>
+                  ) : (
+                    categories.map((c) => (
+                      <li key={c}>
+                        <Link
+                          to={`/search/category/${c}`}
+                          onClick={() => setSidebarIsOpen(false)}
+                        >
+                          {c}
+                        </Link>
+                      </li>
+                    ))
+                  )}
+                </ul> */}
+                {/* <Link className="singin-button" to="/cart">
+                    سبد خرید
+                    {cartItems.length > 0 && (
+                      <span className="badge">{cartItems.length}</span>
+                    )}
+                  </Link> */}
             {userInfo ? (
               <div className="dropdown ">
                 <Link to="#">
@@ -91,43 +89,141 @@ function App() {
                 </Link>
                 <ul className="dropdown-content ">
                   <li>
-                    <Link to="/profile"> مشحصات  </Link>
+                    <Link to="/profile"> مشخصات  </Link>
                   </li>
                   <li>
                     <Link to="/orderhistory">سفارشات</Link>
-                  </li>
-                  <li>
-                    <Link to="#signout" onClick={signoutHandler}>
-                      خروج
-                    </Link>
                   </li>
                 </ul>
               </div>
             ) : (
               
-              <Link className="singin-button" to="/signin">ورود</Link>
+              // <Link className="singin-button" to="/signin">ورود</Link>
+              <b></b>
               
             )}
             
-            {userInfo && userInfo.isSeller && (
-              <div className="dropdown ">
-                <Link to="#admin">
-                  فروشنده <i className="fa fa-caret-down"></i>
-                </Link>
-                <ul className="dropdown-content admin">
-                  <li>
-                    <Link to="/productlist/seller">محصولات</Link>
-                  </li>
-                  <li>
-                    <Link to="/orderlist/seller">سفارشات</Link>
-                  </li>
-                </ul>
+            
+           
+          
+        </div>
+        </header>
+        {/* <aside className={sidebarIsOpen ? 'open' : ''}>
+          
+            <li className="category">
+              <strong className="category">دسته بندی ها </strong>
+              <button
+                onClick={() => setSidebarIsOpen(false)}
+                className="close-sidebar"
+                type="button"
+              >
+                <i className="fa fa-close"></i>
+              </button>
+            </li>
+          
+        </aside> */}
+         <div class="sidebar">
+          <div class="logo-details">
+            <i class='bx bxl-c-plus-plus icon'></i>
+              <div class="logo_name"><a  href="/">موبوشاپ
+            </a></div>
+              <i class='bx bx-menu' id="btn" ></i>
+          </div>
+          <ul class="nav-list">
+            <li>
+            <Route
+              render={({ history }) => (
+                <SearchBox history={history}></SearchBox>
+              )}
+            ></Route>
+            </li>
+            <li>
+              <a href="/cart">
+                <i class='bx bx-cart-alt' ></i>
+                {cartItems.length > 0 && (
+                <span className="badge">{cartItems.length}</span>
+              )}<span class="links_name">سبد خرید</span>
+              </a>
+              <span class="tooltip">سبد خرید</span>
+            </li>
+            <li>
+              <a href="/profile">
+                <i class='bx bx-user' ></i>
+                <span class="links_name">پروفایل</span>
+              </a>
+              <span class="tooltip">پروفایل</span>
+            </li>
+
+            {userInfo ? (
+              <div>
+                <li>
+                  <a href="/orderhistory">
+                  <i class='bx bx-history'></i>
+                    <span class="links_name">سفارشات</span>
+                  </a>
+                  <span class="tooltip">سفارشات</span>
+                </li> 
               </div>
+              
+            ) : (
+              
+              // <Link className="singin-button" to="/signin">ورود</Link>
+              <b></b>
+              
             )}
+            
+            <li>
+              <a href="#">
+                <i class='bx bx-grid-alt'></i>
+                <span class="links_name">Dashboard</span>
+              </a>
+                <span class="tooltip">Dashboard</span>
+            </li>
+          
+            <li>
+              <a href="#">
+                <i class='bx bx-chat' ></i>
+                <span class="links_name">Messages</span>
+              </a>
+              <span class="tooltip">Messages</span>
+            </li>
+                {userInfo && userInfo.isSeller && (
+                <div className="dropdown ">
+                  <li>
+                    <a href="#">
+                      <i class='bx bx-pie-chart-alt-2' ></i>
+                      <span class="links_name">فروشنده<i className="fa fa-caret-down"></i></span>
+                    </a>
+                    <span class="tooltip">فروشنده</span>
+                  </li>
+                  <ul className="dropdown-content admin">
+                    <li>
+                      <Link to="/productlist/seller">محصولات</Link>
+                    </li>
+                    <li>
+                      <Link to="/orderlist/seller">سفارشات</Link>
+                    </li>
+                  </ul>
+              </div>
+                )}
+
+            <li>
+              <a href="#">
+                <i class='bx bx-heart' ></i>
+                <span class="links_name">Saved</span>
+              </a>
+              <span class="tooltip">Saved</span>
+            </li>
+            <li>
             {userInfo && userInfo.isAdmin && (
               <div className="dropdown ">
+                <a href="#">
+                <i class='bx bx-cog' ></i>
+                <span class="links_name">ادمین سایت <i className="fa fa-caret-down"></i></span>
+              </a>
+              <span class="tooltip">ادمین سایت</span>
                 <Link to="#admin">
-                  مدیر سایت <i className="fa fa-caret-down"></i>
+                  
                 </Link>
                 <ul className="dropdown-content admin">
                   <li>
@@ -147,40 +243,31 @@ function App() {
                   </li>
                 </ul>
               </div>
+              
             )}
-          
-        </div>
-        </header>
-        <aside className={sidebarIsOpen ? 'open' : ''}>
-          <ul className="categories">
-            <li className="category">
-              <strong className="category">دسته بندی ها </strong>
-              <button
-                onClick={() => setSidebarIsOpen(false)}
-                className="close-sidebar"
-                type="button"
-              >
-                <i className="fa fa-close"></i>
-              </button>
+              
             </li>
-            {loadingCategories ? (
-              <LoadingBox></LoadingBox>
-            ) : errorCategories ? (
-              <MessageBox variant="danger">{errorCategories}</MessageBox>
-            ) : (
-              categories.map((c) => (
-                <li key={c}>
-                  <Link
-                    to={`/search/category/${c}`}
-                    onClick={() => setSidebarIsOpen(false)}
-                  >
-                    {c}
-                  </Link>
-                </li>
-              ))
-            )}
+           
+            <li class="profile">
+            {userInfo ? (
+                <div class="profile-details">
+                  <img src="./img/profile.jpg"></img>
+                  <div class="name_job">
+                    <div class="name">{userInfo.name}</div>
+                  </div>
+                  <Link to="#signout" onClick={signoutHandler}>
+                <i class='bx bx-log-out' id="log_out" ></i>
+                </Link>
+                </div>
+               ) : (
+                
+                  <a className="log_out" to="/signin"><i class='bx bx-log-in' id="log_in" ></i></a>
+                  )}
+                  
+            </li>
+            
           </ul>
-        </aside>
+        </div>
         <main>
           <Route path="/seller/:id" component={SellerScreen}></Route>
           <Route path="/cart/:id?" component={CartScreen}></Route>

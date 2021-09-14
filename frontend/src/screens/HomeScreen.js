@@ -26,7 +26,6 @@ export default function HomeScreen() {
   }, [dispatch]);
   return (
     <div className="home-section">
-      <h1 className="heading-1"></h1>
       {loadingSellers ? (
         <LoadingBox></LoadingBox>
       ) : errorSellers ? (

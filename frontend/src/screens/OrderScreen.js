@@ -11,6 +11,7 @@ import {
   ORDER_PAY_RESET,
 } from '../constants/orderConstants';
 
+
 export default function OrderScreen(props) {
   const orderId = props.match.params.id;
   const [sdkReady, setSdkReady] = useState(false);
@@ -20,8 +21,6 @@ export default function OrderScreen(props) {
   const { userInfo } = userSignin;
 
 
-
-  
   const orderPay = useSelector((state) => state.orderPay);
   const {
     loading: loadingPay,
@@ -40,7 +39,7 @@ export default function OrderScreen(props) {
       const { data } = await Axios.get('/api/config/zarinpal');
       const script = document.createElement('script');
       script.type = 'text/javascript';
-      script.src = `https://www.paypal.com/sdk/js?client-id=${data}`;
+      script.src = `https://www.zarinpal.com/sdk/js?client-id=${data}`;
       script.async = true;
       script.onload = () => {
         setSdkReady(true);
@@ -195,10 +194,10 @@ export default function OrderScreen(props) {
                       {loadingPay && <LoadingBox></LoadingBox>}
 
                       {/* <PayPalButton
-                        amount={order.totalPrice}
-                        onSuccess={successPaymentHandler}
+                        
                       ></PayPalButton> */}
-                     <button type="button" class="primary block peyment" disabled="">پرداخت</button>
+                     <button type="button" class="primary block peyment" disabled="" amount={order.totalPrice}
+                        onSuccess={successPaymentHandler}>پرداخت</button>
                     </>
                   )}
                 </li>
