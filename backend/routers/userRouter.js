@@ -110,6 +110,7 @@ userRouter.put(
         user.name = req.body.name || user.name;
         user.email = req.body.email || user.email;
         user.phonenumber = req.body.phonenumber || user.phonenumber;
+        user.profile = req.body.profile || user.profile;
         if (user.isSeller) {
           user.seller.name = req.body.sellerName || user.seller.name;
           user.seller.logo = req.body.sellerLogo || user.seller.logo;
@@ -124,6 +125,7 @@ userRouter.put(
           _id: updatedUser._id,
           name: updatedUser.name,
           email: updatedUser.email,
+          profile: updatedUser.profile,
           phonenumber: updatedUser.phonenumber,
           isAdmin: updatedUser.isAdmin,
           isSeller: user.isSeller,

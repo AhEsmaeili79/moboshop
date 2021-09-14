@@ -1,6 +1,6 @@
-import { set } from 'mongoose';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import Axios from 'axios';
 import { detailsUser, updateUserProfile } from '../actions/userActions';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
@@ -10,11 +10,34 @@ export default function ProfileScreen() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phonenumber, setPhonenumber] = useState('');
+  const [profile, setProfile] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [sellerName, setSellerName] = useState('');
   const [sellerLogo, setSellerLogo] = useState('');
   const [sellerDescription, setSellerDescription] = useState('');
+
+  const [loadingUpload, setLoadingUpload] = useState(false);
+  const [errorUpload, setErrorUpload] = useState('');
+  const uploadFileHandler = async (e) => {
+    const file = e.target.files[0];
+    const bodyFormData = new FormData();
+    bodyFormData.append('image', file);
+    setLoadingUpload(true);
+    try {
+      const { data } = await Axios.post('/api/uploads', bodyFormData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      });
+      setProfile(data);
+      setLoadingUpload(false);
+    } catch (error) {
+      setErrorUpload(error.message);
+      setLoadingUpload(false);
+    }
+  };
 
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
@@ -34,7 +57,8 @@ export default function ProfileScreen() {
     } else {
       setName(user.name);
       setEmail(user.email);
-      setPhonenumber(user.phonenumber)
+      setPhonenumber(user.phonenumber);
+      setProfile(user.profile);
       if (user.seller) {
         setSellerName(user.seller.name);
         setSellerLogo(user.seller.logo);
@@ -53,6 +77,7 @@ export default function ProfileScreen() {
           userId: user._id,
           name,
           email,
+          profile,
           phonenumber,
           password,
           sellerName,
@@ -63,7 +88,7 @@ export default function ProfileScreen() {
     }
   };
   return (
-    <div>
+    <div className="fixing">
       <form className="form" onSubmit={submitHandler}>
         <div>
           <h1>مشخصات کاربر</h1>
@@ -83,6 +108,11 @@ export default function ProfileScreen() {
                مشخصات تغییر یافت
               </MessageBox>
             )}
+            <div>
+              <div className="profile-image">
+                <img src={userInfo.profile}></img>
+              </div>
+            </div>
             <div>
               <label htmlFor="name">نام</label>
               <input
@@ -112,6 +142,19 @@ export default function ProfileScreen() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               ></input>
+            </div>
+            <div>
+              <label htmlFor="imageFile">تصویر پروفایل</label>
+              <input
+                type="file"
+                id="profile"
+                label="تصویر پروفایل "
+                onChange={uploadFileHandler}
+              ></input>
+              {loadingUpload && <LoadingBox></LoadingBox>}
+              {errorUpload && (
+                <MessageBox variant="danger">{errorUpload}</MessageBox>
+              )}
             </div>
             <div>
               <label htmlFor="password">کلمه عبور </label>

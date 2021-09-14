@@ -13,7 +13,7 @@ export default function DashboardScreen() {
     dispatch(summaryOrder());
   }, [dispatch]);
   return (
-    <div>
+    <div className="fixing">
       <div className="dashboard">
       <div className="row">
         <h1>پنل کاربری</h1>
