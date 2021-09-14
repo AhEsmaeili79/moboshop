@@ -86,7 +86,7 @@ export default function ProductEditScreen(props) {
   };
 
   return (
-    <div>
+    <div className="fixing">
       <form className="form" onSubmit={submitHandler}>
         <div>
           <h1>تغییر محصول  {productId}</h1>

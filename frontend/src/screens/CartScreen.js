@@ -27,84 +27,86 @@ export default function CartScreen(props) {
     props.history.push('/signin?redirect=shipping');
   };
   return (
-    <div className="cart-screen">
-    <div className="row top">
-      <div className="col-2">
-        <h1>سبد خرید</h1>
-        {error && <MessageBox variant="danger">{error}</MessageBox>}
-        {cartItems.length === 0 ? (
-          <MessageBox>
-           سبد خرید خالی است.<Link to="/"> صفحه اصلی </Link>
-          </MessageBox>
-        ) : (
-          <ul>
-            {cartItems.map((item) => (
-              <li key={item.product}>
-                <div className="row">
-                  <div>
-                    <img
-                      src={item.image}
-                      alt={item.name}
-                      className="small"
-                    ></img>
+  <div className="cart-screen">
+    <div className="fixing">
+      <div className="row top">
+        <div className="col-2">
+          <h1>سبد خرید</h1>
+          {error && <MessageBox variant="danger">{error}</MessageBox>}
+          {cartItems.length === 0 ? (
+            <MessageBox>
+            سبد خرید خالی است.<Link to="/"> صفحه اصلی </Link>
+            </MessageBox>
+          ) : (
+            <ul>
+              {cartItems.map((item) => (
+                <li key={item.product}>
+                  <div className="row">
+                    <div>
+                      <img
+                        src={item.image}
+                        alt={item.name}
+                        className="small"
+                      ></img>
+                    </div>
+                    <div className="min-30">
+                      <Link to={`/product/${item.product}`}>{item.name}</Link>
+                    </div>
+                    <div>
+                      <select
+                        value={item.qty}
+                        onChange={(e) =>
+                          dispatch(
+                            addToCart(item.product, Number(e.target.value))
+                          )
+                        }
+                      >
+                        {[...Array(item.countInStock).keys()].map((x) => (
+                          <option key={x + 1} value={x + 1}>
+                            {x + 1}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                    <div>{item.price} تومان</div>
+                    <div>
+                      <button
+                        type="button"
+                        onClick={() => removeFromCartHandler(item.product)}
+                      >
+                        حذف
+                      </button>
+                    </div>
                   </div>
-                  <div className="min-30">
-                    <Link to={`/product/${item.product}`}>{item.name}</Link>
-                  </div>
-                  <div>
-                    <select
-                      value={item.qty}
-                      onChange={(e) =>
-                        dispatch(
-                          addToCart(item.product, Number(e.target.value))
-                        )
-                      }
-                    >
-                      {[...Array(item.countInStock).keys()].map((x) => (
-                        <option key={x + 1} value={x + 1}>
-                          {x + 1}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                  <div>{item.price} تومان</div>
-                  <div>
-                    <button
-                      type="button"
-                      onClick={() => removeFromCartHandler(item.product)}
-                    >
-                      حذف
-                    </button>
-                  </div>
-                </div>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+        <div className="col-1">
+          <div className="card card-body incart-screen">
+            <ul>
+              <li>
+                <h2>
+                  جمع کلی  (تعداد : {cartItems.reduce((a, c) => a + c.qty, 0)} ) : 
+                  {cartItems.reduce((a, c) => a + c.price * c.qty, 0)}تومان
+                </h2>
               </li>
-            ))}
-          </ul>
-        )}
-      </div>
-      <div className="col-1">
-        <div className="card card-body incart-screen">
-          <ul>
-            <li>
-              <h2>
-                جمع کلی  (تعداد : {cartItems.reduce((a, c) => a + c.qty, 0)} ) : 
-                {cartItems.reduce((a, c) => a + c.price * c.qty, 0)}تومان
-              </h2>
-            </li>
-            <li>
-              <button
-                type="button"
-                onClick={checkoutHandler}
-                className="primary block"
-                disabled={cartItems.length === 0}
-              >
-                پرداخت نهایی
-              </button>
-            </li>
-          </ul>
+                <li>
+                    <button
+                    type="button"
+                    onClick={checkoutHandler}
+                    className="primary block"
+                    disabled={cartItems.length === 0}
+                  >
+                  پرداخت نهایی
+                  </button>
+                </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
-    </div>
+  </div>
   );
 }

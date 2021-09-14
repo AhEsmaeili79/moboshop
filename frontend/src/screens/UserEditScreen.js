@@ -46,7 +46,7 @@ export default function UserEditScreen(props) {
     dispatch(updateUser({ _id: userId, name, email, isSeller, isAdmin }));
   };
   return (
-    <div>
+    <div className="fixing">
       <form className="form" onSubmit={submitHandler}>
         <div>
           <h1>تغییر اطلاعات کاربر {name}</h1>

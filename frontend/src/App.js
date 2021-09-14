@@ -57,130 +57,161 @@ function App() {
     <BrowserRouter>
       <div className="grid-container">
         <header className="row">
-          <div className="brand-slider">
-            <button
-              type="button"
-              className="open-sidebar"
-              onClick={() => setSidebarIsOpen(true)}
-            >
-              <i className="fa fa-bars"></i>
-            </button>
-            <Link className="brand" to="/">
-              موبوشاپ
-            </Link>
+        <a className="brand" href="/">موبوشاپ</a>
+         <h1 className="welcome"> {userInfo.name} خوش آمدید </h1>
+        </header>
+         <div className="sidebar">
+          <div className="logo-details">
+          <i class='bx bx-mobile-alt icon'></i>
+              <div className="logo_name"><a  href="/">موبوشاپ
+            </a></div>
+              <i className='bx bx-menu' id="btn" ></i>
           </div>
-          
-          <div className="search">
+          <ul className="nav-list">
+            <li>
             <Route
               render={({ history }) => (
                 <SearchBox history={history}></SearchBox>
               )}
             ></Route>
-          </div>
-          <div className='menu'>
-          <Link className="singin-button" to="/cart">
-              سبد خرید
-              {cartItems.length > 0 && (
-                <span className="badge">{cartItems.length}</span>
-              )}
-            </Link>
-            {userInfo ? (
-              <div className="dropdown ">
-                <Link to="#">
-                  {userInfo.name} <i className="fa fa-caret-down"></i>{' '}
-                </Link>
-                <ul className="dropdown-content ">
-                  <li>
-                    <Link to="/profile"> مشحصات  </Link>
-                  </li>
-                  <li>
-                    <Link to="/orderhistory">سفارشات</Link>
-                  </li>
-                  <li>
-                    <Link to="#signout" onClick={signoutHandler}>
-                      خروج
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-            ) : (
-              
-              <Link className="singin-button" to="/signin">ورود</Link>
-              
-            )}
-            
-            {userInfo && userInfo.isSeller && (
-              <div className="dropdown ">
-                <Link to="#admin">
-                  فروشنده <i className="fa fa-caret-down"></i>
-                </Link>
-                <ul className="dropdown-content admin">
-                  <li>
-                    <Link to="/productlist/seller">محصولات</Link>
-                  </li>
-                  <li>
-                    <Link to="/orderlist/seller">سفارشات</Link>
-                  </li>
-                </ul>
-              </div>
-            )}
-            {userInfo && userInfo.isAdmin && (
-              <div className="dropdown ">
-                <Link to="#admin">
-                  مدیر سایت <i className="fa fa-caret-down"></i>
-                </Link>
-                <ul className="dropdown-content admin">
-                  <li>
-                    <Link to="/dashboard">پنل داشبورد</Link>
-                  </li>
-                  <li>
-                    <Link to="/productlist">محصولات</Link>
-                  </li>
-                  <li>
-                    <Link to="/orderlist">سفارشات</Link>
-                  </li>
-                  <li>
-                    <Link to="/userlist">کاربران</Link>
-                  </li>
-                  <li>
-                    <Link to="/support">پشتیبانی</Link>
-                  </li>
-                </ul>
-              </div>
-            )}
-          
-        </div>
-        </header>
-        <aside className={sidebarIsOpen ? 'open' : ''}>
-          <ul className="categories">
-            <li className="category">
-              <strong className="category">دسته بندی ها </strong>
-              <button
-                onClick={() => setSidebarIsOpen(false)}
-                className="close-sidebar"
-                type="button"
-              >
-                <i className="fa fa-close"></i>
-              </button>
             </li>
-            {loadingCategories ? (
-              <LoadingBox></LoadingBox>
-            ) : errorCategories ? (
-              <MessageBox variant="danger">{errorCategories}</MessageBox>
+            <li>
+              <a href="/cart">
+                <i className='bx bx-cart-alt' ></i>
+                {cartItems.length > 0 && (
+                <span className="badge">{cartItems.length}</span>
+              )}<span className="links_name">سبد خرید</span>
+              </a>
+              <span className="tooltip">سبد خرید</span>
+            </li>
+            <li>
+              <a href="/profile">
+                <i className='bx bx-user' ></i>
+                <span className="links_name">پروفایل</span>
+              </a>
+              <span className="tooltip">پروفایل</span>
+            </li>
+
+            {userInfo ? (
+              <div>
+                <li>
+                  <a href="/orderhistory">
+                  <i className='bx bx-history'></i>
+                    <span className="links_name">سفارشات</span>
+                  </a>
+                  <span className="tooltip">سفارشات</span>
+                </li> 
+              </div>
+              
             ) : (
-              categories.map((c) => (
-                <li key={c}>
-                  <Link
-                    to={`/search/category/${c}`}
-                    onClick={() => setSidebarIsOpen(false)}
-                  >
-                    {c}
-                  </Link>
-                </li>
-              ))
+              
+              <b></b>
+              
             )}
+           
+            <li>
+              <div className="iocn-link">
+                <a className="link-menu" href="#">
+                  <i className='bx bx-collection' ></i>
+                  <span className="links_name">برند ها </span>
+                </a>
+                <i className='bx bxs-chevron-down arrow' ></i>
+              </div>
+                <ul className="sub-menu">
+                {loadingCategories ? (
+                    <LoadingBox></LoadingBox>
+                  ) : errorCategories ? (
+                    <MessageBox variant="danger">{errorCategories}</MessageBox>
+                  ) : (
+                    categories.map((c) => (
+                      <Link
+                          to={`/search/category/${c}`}
+                          onClick={() => setSidebarIsOpen(false)} >
+                          <li key={c}><a href="#"><span className="submenu">{c}</span ></a></li> </Link>
+                  ))
+                  )}
+                </ul>
+                <ul className="hover-menu"> 
+
+                {loadingCategories ? (
+                    <LoadingBox></LoadingBox>
+                  ) : errorCategories ? (
+                    <MessageBox variant="danger">{errorCategories}</MessageBox>
+                  ) : (
+                    categories.map((c) => (
+                      <Link
+                          to={`/search/category/${c}`}
+                          onClick={() => setSidebarIsOpen(false)} >
+                          <li key={c}><a href="#"><span className="submenu">{c}</span ></a></li> </Link> 
+                    ))
+                  )}
+                </ul>
+              </li>
+                {userInfo && userInfo.isSeller && (
+                  <li>
+                  <div className="iocn-link">
+                    <a className="link-menu" href="#">
+                    <i class='bx bxs-shopping-bags' ></i>
+                      <span className="links_name">فروشنده</span>
+                    </a>
+                    <i className='bx bxs-chevron-down arrow' ></i>
+                  </div>
+                    <ul className="sub-menu">
+                    <Link to="/productlist/seller"><li><a href="#"><span className="submenu">محصولات</span ></a></li></Link>
+                    <Link to="/orderlist/seller"><li><a href="#"><span className="submenu">سفارشات</span ></a></li></Link>
+                    </ul>
+                    <ul className="hover-menu">
+                    <Link to="/productlist/seller"><li><a href="#"><span className="submenu">محصولات</span ></a></li></Link>
+                    <Link to="/orderlist/seller"><li><a href="#"><span className="submenu">سفارشات</span ></a></li></Link>
+                    </ul>
+                </li>
+                )}
+
+            {userInfo && userInfo.isAdmin && (
+            <li>
+              <div className="iocn-link">
+                <a className="link-menu" href="#">
+                <i class='bx bx-cog' ></i>
+                  <span className="links_name">  مدیریت </span>
+                </a>
+                <i className='bx bxs-chevron-down arrow' ></i>
+              </div>
+                <ul className="sub-menu">
+                  <Link to="/dashboard"><li><a href="#"><span className="submenu"> داشبورد </span ></a></li></Link>
+                  <Link to="/productlist"><li><a href="#"><span className="submenu">محصولات</span ></a></li></Link>
+                  <Link to="/orderlist"><li><a href="#"><span className="submenu">سفارشات</span ></a></li> </Link>
+                  <Link to="/userlist"><li><a href="#"><span className="submenu">کاربران</span ></a></li> </Link>
+                  <Link to="/support"><li><a href="#"><span className="submenu">پشتیبانی</span ></a></li> </Link>
+                </ul>
+                <ul className="hover-menu">
+                  <Link to="/dashboard"><li><a href="#"><span className="submenu"> داشبورد </span ></a></li></Link>
+                  <Link to="/productlist"><li><a href="#"><span className="submenu">محصولات</span ></a></li></Link>
+                  <Link to="/orderlist"><li><a href="#"><span className="submenu">سفارشات</span ></a></li> </Link>
+                  <Link to="/userlist"><li><a href="#"><span className="submenu">کاربران</span ></a></li> </Link>
+                  <Link to="/support"><li><a href="#"><span className="submenu">پشتیبانی</span ></a></li> </Link>
+                </ul>
+            </li>
+             )}
+            <li className="profile">
+            {userInfo ? (
+                <div className="profile-details">
+                  <img src={userInfo.profile}></img>
+                  <div className="name_job">
+                    <div className="name">{userInfo.name}</div>
+                  </div>
+                  <Link to="#signout" onClick={signoutHandler}>
+                <i className='bx bx-log-out' id="log_out" ></i>
+                </Link>
+                </div>
+               ) : (
+                
+                  <a className="log_out" to="/signin"><i className='bx bx-log-in' id="log_in" ></i></a>
+                  )}
+                  
+            </li>
+            
           </ul>
-        </aside>
+        </div>
         <main>
           <Route path="/seller/:id" component={SellerScreen}></Route>
           <Route path="/cart/:id?" component={CartScreen}></Route>

@@ -37,7 +37,7 @@ export default function RegisterScreen(props) {
     }
   }, [props.history, redirect, userInfo]);
   return (
-    <div>
+    <div className="fixing">
       <form className="form" onSubmit={submitHandler}>
         <div>
           <h1>ثبت نام</h1>

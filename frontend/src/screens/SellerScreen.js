@@ -25,6 +25,7 @@ export default function SellerScreen(props) {
     dispatch(listProducts({ seller: sellerId }));
   }, [dispatch, sellerId]);
   return (
+    <div className="fixing">
     <div className="seller-background">
       <div className="row top">
         <div className="col-1">
@@ -80,5 +81,6 @@ export default function SellerScreen(props) {
         </div>
       </div>  
     </div>
+  </div>
   );
 }

@@ -27,7 +27,7 @@ export default function SigninScreen(props) {
     }
   }, [props.history, redirect, userInfo]);
   return (
-    <div>
+    <div className="fixing">
       <form className="form" onSubmit={submitHandler}>
         <div>
           <h1>ورود</h1>
@@ -66,9 +66,7 @@ export default function SigninScreen(props) {
           <label />
           <div>
             ثبت نام نکرده اید ؟{' '}
-            <Link to={`/register?redirect=${redirect}`}>
-               ثبت نام  
-            </Link>
+            <a href="/register">ثبت نام</a>
           </div>
         </div>
       </form>

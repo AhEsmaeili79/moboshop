@@ -49,6 +49,7 @@ export default function ProductScreen(props) {
     }
   };
   return (
+    <div className="fixing">
     <div className="back-button" >
       {loading ? (
         <LoadingBox></LoadingBox>
@@ -223,5 +224,6 @@ export default function ProductScreen(props) {
         </div>
       )}
     </div>
+  </div>
   );
 }
