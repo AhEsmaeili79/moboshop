@@ -241,8 +241,9 @@ footer.row.center{
 .slider-seller{
   direction: ltr;
   margin-left: 78px;
-}
-.fixing , .fixing-search , .fixing-cart , 
+} 
+
+.fixing-search , .fixing-cart , 
 .fixing-dashboard , .fixing-register , 
 .fixing-profile ,.fixing-order-history,
 .fixing-payment-method , .fixing-palce-order ,
