@@ -31,7 +31,6 @@ import MapScreen from './screens/MapScreen';
 import DashboardScreen from './screens/DashboardScreen';
 import SupportScreen from './screens/SupportScreen';
 import ChatBox from './components/ChatBox';
-import Phonenumber from './components/Phonenumber';
 
 function App() {
   const cart = useSelector((state) => state.cart);
@@ -55,8 +54,8 @@ function App() {
   }, [dispatch]);
   return (
     <BrowserRouter>
-      <div className="grid-container">
-        <header className="row">
+      <div className="grid-container ">
+        <header className="row ">
       
         <a className="brand" href="/">موبوشاپ</a>
         {userInfo ? (
@@ -67,7 +66,7 @@ function App() {
         </header>
          <div className="sidebar">
           <div className="logo-details">
-          <i class='bx bx-mobile-alt icon'></i>
+          <i className='bx bx-mobile-alt icon'></i>
               <div className="logo_name"><a  href="/">موبوشاپ
             </a></div>
               <i className='bx bx-menu' id="btn" ></i>
@@ -82,10 +81,11 @@ function App() {
             </li>
             <li>
               <a href="/cart">
-                <i className='bx bx-cart-alt' ></i>
-                {cartItems.length > 0 && (
-                <span className="badge">{cartItems.length}</span>
-              )}<span className="links_name">سبد خرید</span>
+              
+                <i className='bx bx-cart-alt' >{cartItems.length > 0 && (<span className="ibadge"> {cartItems.length}  </span>)}</i>
+               
+               <span className="links_name"> سبد خرید {cartItems.length > 0 && (<span className="badge">{cartItems.length} </span>)}</span> 
+            
               </a>
               <span className="tooltip">سبد خرید</span>
             </li>
@@ -121,6 +121,7 @@ function App() {
                   <span className="links_name">برند ها </span>
                 </a>
                 <i className='bx bxs-chevron-down arrow' ></i>
+                <span className="tooltip">برند ها </span>
               </div>
                 <ul className="sub-menu">
                 {loadingCategories ? (
@@ -132,7 +133,7 @@ function App() {
                       <Link
                           to={`/search/category/${c}`}
                           onClick={() => setSidebarIsOpen(false)} >
-                          <li key={c}><a href="#"><span className="submenu">{c}</span ></a></li> </Link>
+                          <li key={c}><span className="submenu">{c}</span ></li> </Link>
                   ))
                   )}
                 </ul>
@@ -147,7 +148,7 @@ function App() {
                       <Link
                           to={`/search/category/${c}`}
                           onClick={() => setSidebarIsOpen(false)} >
-                          <li key={c}><a href="#"><span className="submenu">{c}</span ></a></li> </Link> 
+                          <li key={c}><span className="submenu">{c}</span ></li> </Link> 
                     ))
                   )}
                 </ul>
@@ -156,18 +157,19 @@ function App() {
                   <li>
                   <div className="iocn-link">
                     <a className="link-menu" href="#">
-                    <i class='bx bxs-shopping-bags' ></i>
+                    <i className='bx bxs-shopping-bags' ></i>
                       <span className="links_name">فروشنده</span>
                     </a>
                     <i className='bx bxs-chevron-down arrow' ></i>
+                    <span className="tooltip">فروشنده</span>
                   </div>
                     <ul className="sub-menu">
-                    <Link to="/productlist/seller"><li><a href="#"><span className="submenu">محصولات</span ></a></li></Link>
-                    <Link to="/orderlist/seller"><li><a href="#"><span className="submenu">سفارشات</span ></a></li></Link>
+                    <Link to="/productlist/seller"><li><span className="submenu">محصولات</span ></li></Link>
+                    <Link to="/orderlist/seller"><li><span className="submenu">سفارشات</span ></li></Link>
                     </ul>
                     <ul className="hover-menu">
-                    <Link to="/productlist/seller"><li><a href="#"><span className="submenu">محصولات</span ></a></li></Link>
-                    <Link to="/orderlist/seller"><li><a href="#"><span className="submenu">سفارشات</span ></a></li></Link>
+                    <Link to="/productlist/seller"><li><span className="submenu">محصولات</span ></li></Link>
+                    <Link to="/orderlist/seller"><li><span className="submenu">سفارشات</span ></li></Link>
                     </ul>
                 </li>
                 )}
@@ -176,24 +178,25 @@ function App() {
             <li>
               <div className="iocn-link">
                 <a className="link-menu" href="#">
-                <i class='bx bx-cog' ></i>
+                <i className='bx bx-cog' ></i>
                   <span className="links_name">  مدیریت </span>
                 </a>
                 <i className='bx bxs-chevron-down arrow' ></i>
+                <span className="tooltip">مدیریت </span>
               </div>
                 <ul className="sub-menu">
-                  <Link to="/dashboard"><li><a href="#"><span className="submenu"> داشبورد </span ></a></li></Link>
-                  <Link to="/productlist"><li><a href="#"><span className="submenu">محصولات</span ></a></li></Link>
-                  <Link to="/orderlist"><li><a href="#"><span className="submenu">سفارشات</span ></a></li> </Link>
-                  <Link to="/userlist"><li><a href="#"><span className="submenu">کاربران</span ></a></li> </Link>
-                  <Link to="/support"><li><a href="#"><span className="submenu">پشتیبانی</span ></a></li> </Link>
+                  <Link to="/dashboard"><li><span className="submenu"> داشبورد </span ></li></Link>
+                  <Link to="/productlist"><li><span className="submenu">محصولات</span ></li></Link>
+                  <Link to="/orderlist"><li><span className="submenu">سفارشات</span ></li> </Link>
+                  <Link to="/userlist"><li><span className="submenu">کاربران</span ></li> </Link>
+                  <Link to="/support"><li><span className="submenu">پشتیبانی</span ></li> </Link>
                 </ul>
                 <ul className="hover-menu">
-                  <Link to="/dashboard"><li><a href="#"><span className="submenu"> داشبورد </span ></a></li></Link>
-                  <Link to="/productlist"><li><a href="#"><span className="submenu">محصولات</span ></a></li></Link>
-                  <Link to="/orderlist"><li><a href="#"><span className="submenu">سفارشات</span ></a></li> </Link>
-                  <Link to="/userlist"><li><a href="#"><span className="submenu">کاربران</span ></a></li> </Link>
-                  <Link to="/support"><li><a href="#"><span className="submenu">پشتیبانی</span ></a></li> </Link>
+                <Link to="/dashboard"><li><span className="submenu"> داشبورد </span ></li></Link>
+                  <Link to="/productlist"><li><span className="submenu">محصولات</span ></li></Link>
+                  <Link to="/orderlist"><li><span className="submenu">سفارشات</span ></li> </Link>
+                  <Link to="/userlist"><li><span className="submenu">کاربران</span ></li> </Link>
+                  <Link to="/support"><li><span className="submenu">پشتیبانی</span ></li> </Link>
                 </ul>
             </li>
              )}

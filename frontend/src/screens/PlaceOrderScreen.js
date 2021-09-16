@@ -32,7 +32,7 @@ export default function PlaceOrderScreen(props) {
     }
   }, [dispatch, order, props.history, success]);
   return (
-    <div className="fixing">
+    <div className="fixing-palce-order">
       <CheckoutSteps step1 step2 step3 step4></CheckoutSteps>
       <div className="row top">
         <div className="col-2">
@@ -52,7 +52,7 @@ export default function PlaceOrderScreen(props) {
               <div className="card card-body">
                 <h2>پرداخت</h2>
                 <p>
-                  <strong>روش پرداخت:</strong> زرین پال
+                  <strong>روش پرداخت:</strong> {cart.paymentMethod}
                 </p>
               </div>
             </li>

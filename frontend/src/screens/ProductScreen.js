@@ -49,7 +49,7 @@ export default function ProductScreen(props) {
     }
   };
   return (
-    <div className="fixing">
+    <div className="fixing-product">
     <div className="back-button" >
       {loading ? (
         <LoadingBox></LoadingBox>
@@ -152,7 +152,7 @@ export default function ProductScreen(props) {
           <div className ="product-border">
             <h2 id="reviews">نظرات</h2>
             {product.reviews.length === 0 && (
-              <MessageBox>شما میتوانید اولین نظر در مورد این محصول را بدهید</MessageBox>
+              <MessageBox className="first-reviews">شما میتوانید اولین نظر در مورد این محصول را بدهید</MessageBox>
             )}
             <ul>
               {product.reviews.map((review) => (

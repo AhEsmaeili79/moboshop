@@ -9,7 +9,7 @@ export default function PaymentMethodScreen(props) {
   if (!shippingAddress.address) {
     props.history.push('/shipping');
   }
-  const [paymentMethod, setPaymentMethod] = useState('PayPal');
+  const [paymentMethod, setPaymentMethod] = useState('zarinpal');
   const dispatch = useDispatch();
   const submitHandler = (e) => {
     e.preventDefault();
@@ -17,7 +17,7 @@ export default function PaymentMethodScreen(props) {
     props.history.push('/placeorder');
   };
   return (
-    <div className="fixing">
+    <div className="fixing-payment-method">
       <CheckoutSteps step1 step2 step3></CheckoutSteps>
       <form className="form" onSubmit={submitHandler}>
         <div>
@@ -28,7 +28,7 @@ export default function PaymentMethodScreen(props) {
             <input
               type="radio"
               id="zarinpal"
-              value="zarinpal "
+              value="زرین پال "
               name="paymentMethod"
               required
               checked

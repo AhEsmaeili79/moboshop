@@ -12,7 +12,7 @@ export default function OrderHistoryScreen(props) {
     dispatch(listOrderMine());
   }, [dispatch]);
   return (
-    <div className="fixing">
+    <div className="fixing-order-history">
       <h1>تاریخچه سفارشات</h1>
       {loading ? (
         <LoadingBox></LoadingBox>

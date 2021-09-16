@@ -29,7 +29,7 @@ export default function OrderListScreen(props) {
     }
   };
   return (
-    <div className="fixing">
+    <div className="fixing-order-list">
       <h1>سفارشات</h1>
       {loadingDelete && <LoadingBox></LoadingBox>}
       {errorDelete && <MessageBox variant="danger">{errorDelete}</MessageBox>}

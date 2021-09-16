@@ -25,7 +25,7 @@ export default function HomeScreen() {
     dispatch(listTopSellers());
   }, [dispatch]);
   return (
-    <div className="home-section">
+    <div className="home-section fixing">
       {loadingSellers ? (
         <LoadingBox></LoadingBox>
       ) : errorSellers ? (

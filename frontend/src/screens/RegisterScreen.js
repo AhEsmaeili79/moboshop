@@ -37,7 +37,7 @@ export default function RegisterScreen(props) {
     }
   }, [props.history, redirect, userInfo]);
   return (
-    <div className="fixing">
+    <div className="fixing-register">
       <form className="form" onSubmit={submitHandler}>
         <div>
           <h1>ثبت نام</h1>
@@ -63,7 +63,7 @@ export default function RegisterScreen(props) {
                   oninput="this.setCustomValidity('')"
                   required
                   onChange={(e) => setPhonenumber(e.target.value)}/>
-                <input type="submit" class="btn" value="تایید" />
+                <input type="submit" className="btn" value="تایید" />
           </div>
         </div>
         <div>

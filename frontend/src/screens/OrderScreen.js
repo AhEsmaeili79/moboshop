@@ -1,16 +1,16 @@
 import Axios from 'axios';
-import { PayPalButton } from 'react-paypal-button-v2';
+// import { PayPalButton } from 'react-paypal-button-v2';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { deliverOrder, detailsOrder, payOrder } from '../actions/orderActions';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
+
 import {
   ORDER_DELIVER_RESET,
   ORDER_PAY_RESET,
 } from '../constants/orderConstants';
-
 
 export default function OrderScreen(props) {
   const orderId = props.match.params.id;
@@ -19,8 +19,31 @@ export default function OrderScreen(props) {
   const { order, loading, error } = orderDetails;
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
+  
+  
 
-
+  //  const script = document.createElement('script');
+  // script.type = 'text/javascript';
+  // script.src ="";
+  // const merchant_id =  "1aaccd0b-9c1b-405c-8952-f21f8bd277bc";
+  
+  // const callback_url = "http://localhost:3000/callback";
+  // const description = "خرید ";
+  // const email = userInfo.email ;
+  // const phonenumber = userInfo.phonenumber;
+  let params = {
+    MerchantID :  "1aaccd0b-9c1b-405c-8952-f21f8bd277bc",
+    Amount : 1000 ,
+    CallbackURL : "http://localhost:3000/callback/",
+    Description : "خرید ",
+ }
+  
+ var response;
+ const payment = async () => {
+  response = await Axios.post("https://www.zarinpal.com/pg/rest/WebGate/PeymentRequest.json", params);
+  console.log(response);
+ };
+  
   const orderPay = useSelector((state) => state.orderPay);
   const {
     loading: loadingPay,
@@ -36,15 +59,8 @@ export default function OrderScreen(props) {
   const dispatch = useDispatch();
   useEffect(() => {
     const addPayPalScript = async () => {
-      const { data } = await Axios.get('/api/config/zarinpal');
-      const script = document.createElement('script');
-      script.type = 'text/javascript';
-      script.src = `https://www.zarinpal.com/sdk/js?client-id=${data}`;
-      script.async = true;
-      script.onload = () => {
+
         setSdkReady(true);
-      };
-      document.body.appendChild(script);
     };
     if (
       !order ||
@@ -78,7 +94,8 @@ export default function OrderScreen(props) {
   ) : error ? (
     <MessageBox variant="danger">{error}</MessageBox>
   ) : (
-    <div className="fixing">
+    
+    <div className="fixing-order">
       <h1>سفارش :  {order._id}</h1>
       <div className="row top">
         <div className="col-2">
@@ -106,7 +123,7 @@ export default function OrderScreen(props) {
               <div className="card card-body">
                 <h2>پرداخت</h2>
                 <p>
-                  <strong>روش :</strong> زرین پال
+                  <strong>روش :</strong>   {order.paymentMethod}
                 </p>
                 {order.isPaid ? (
                   <MessageBox variant="success">
@@ -194,11 +211,22 @@ export default function OrderScreen(props) {
                       {loadingPay && <LoadingBox></LoadingBox>}
 
                       {/* <PayPalButton
-                        
+                        amount={order.totalPrice}
+                        onSuccess={successPaymentHandler}
                       ></PayPalButton> */}
-                     <button type="button" class="primary block peyment" disabled="" amount={order.totalPrice}
-                        onSuccess={successPaymentHandler}>پرداخت</button>
-                    </>
+
+                      <from  method="POST" >
+                        <button
+                          
+                          type="submit"
+                          onClick={payment}
+                          className="primary block peyment"
+                        >
+                          پرداخت
+                        </button>
+                      </from>
+
+                   </> 
                   )}
                 </li>
               )}

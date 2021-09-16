@@ -28,7 +28,7 @@ export default function CartScreen(props) {
   };
   return (
   <div className="cart-screen">
-    <div className="fixing">
+    <div className="fixing-cart">
       <div className="row top">
         <div className="col-2">
           <h1>سبد خرید</h1>
@@ -70,7 +70,9 @@ export default function CartScreen(props) {
                     </div>
                     <div>{item.price} تومان</div>
                     <div>
-                      <button
+                      <button 
+                   
+                       
                         type="button"
                         onClick={() => removeFromCartHandler(item.product)}
                       >

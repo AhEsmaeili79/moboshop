@@ -67,7 +67,7 @@ export default function ShippingAddressScreen(props) {
     props.history.push('/map');
   };
   return (
-    <div className="fixing">
+    <div className="fixing-shipping">
       <CheckoutSteps step1 step2></CheckoutSteps>
       <form className="form" onSubmit={submitHandler}>
         <div>

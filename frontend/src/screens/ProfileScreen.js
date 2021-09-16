@@ -88,7 +88,7 @@ export default function ProfileScreen() {
     }
   };
   return (
-    <div className="fixing">
+    <div className="fixing-profile">
       <form className="form" onSubmit={submitHandler}>
         <div>
           <h1>مشخصات کاربر</h1>

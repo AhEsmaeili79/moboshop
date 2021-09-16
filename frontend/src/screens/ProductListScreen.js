@@ -68,7 +68,7 @@ export default function ProductListScreen(props) {
     dispatch(createProduct());
   };
   return (
-    <div className="fixing">
+    <div className="fixing-product-list">
       <div className="row">
         <h1>محصولات</h1>
         <button type="button" className="primary" onClick={createHandler}>

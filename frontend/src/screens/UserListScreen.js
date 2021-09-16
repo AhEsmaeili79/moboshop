@@ -29,7 +29,7 @@ export default function UserListScreen(props) {
     }
   };
   return (
-    <div className="fixing">
+    <div className="fixing-user-list">
       <h1>کاربران</h1>
       {loadingDelete && <LoadingBox></LoadingBox>}
       {errorDelete && <MessageBox variant="danger">{errorDelete}</MessageBox>}

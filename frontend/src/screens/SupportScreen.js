@@ -111,7 +111,7 @@ export default function SupportScreen() {
   };
 
   return (
-    <div className="fixing">
+    <div className="fixing-support">
     <div className="row top full-container">
       <div className="col-1 support-users">
         {users.filter((x) => x._id !== userInfo._id).length === 0 && (
