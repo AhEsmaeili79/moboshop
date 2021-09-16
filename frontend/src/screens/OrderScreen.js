@@ -1,5 +1,6 @@
-import Axios from 'axios';
+
 // import { PayPalButton } from 'react-paypal-button-v2';
+import Axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -20,7 +21,6 @@ export default function OrderScreen(props) {
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
   
-  
 
   //  const script = document.createElement('script');
   // script.type = 'text/javascript';
@@ -31,18 +31,20 @@ export default function OrderScreen(props) {
   // const description = "خرید ";
   // const email = userInfo.email ;
   // const phonenumber = userInfo.phonenumber;
+
+
   let params = {
-    MerchantID :  "1aaccd0b-9c1b-405c-8952-f21f8bd277bc",
-    Amount : 1000 ,
-    CallbackURL : "http://localhost:3000/callback/",
-    Description : "خرید ",
- }
-  
- var response;
- const payment = async () => {
-  response = await Axios.post("https://www.zarinpal.com/pg/rest/WebGate/PeymentRequest.json", params);
-  console.log(response);
- };
+        MerchantID :  "1aaccd0b-9c1b-405c-8952-f21f8bd277bc",
+        Amount : 1000 ,
+        CallbackURL : "http://localhost:3000/callback/",
+        Description : "خرید ",
+      }
+     
+     var response;
+      const payment = async () => {
+       response = await Axios.post("https://api.zarinpal.com/pg/v4/payment/request.json", params);
+       console.log(response);
+      };
   
   const orderPay = useSelector((state) => state.orderPay);
   const {
@@ -112,7 +114,7 @@ export default function OrderScreen(props) {
                 </p>
                 {order.isDelivered ? (
                   <MessageBox variant="success">
-                    Delivered at {order.deliveredAt}
+                       تحویل داده شده در  : {order.deliveredAt.substring(0, 10)}
                   </MessageBox>
                 ) : (
                   <MessageBox variant="danger">تحویل داده نشده</MessageBox>
@@ -127,7 +129,7 @@ export default function OrderScreen(props) {
                 </p>
                 {order.isPaid ? (
                   <MessageBox variant="success">
-                    پرداخت در  {order.paidAt}
+                    پرداخت در : {order.paidAt.substring(0, 10)}
                   </MessageBox>
                 ) : (
                   <MessageBox variant="danger">پرداخت نشده</MessageBox>
@@ -215,7 +217,7 @@ export default function OrderScreen(props) {
                         onSuccess={successPaymentHandler}
                       ></PayPalButton> */}
 
-                      <from  method="POST" >
+                      <from action="/:id/payment" method="POST" >
                         <button
                           
                           type="submit"

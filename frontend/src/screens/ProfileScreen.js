@@ -110,7 +110,7 @@ export default function ProfileScreen() {
             )}
             <div>
               <div className="profile-image">
-                <img src={userInfo.profile}></img>
+                <img src={userInfo.profile} alt="profile"></img>
               </div>
             </div>
             <div>

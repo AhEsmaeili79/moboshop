@@ -26,8 +26,6 @@ export default function OrderHistoryScreen(props) {
               <th>تاریخ</th>
               <th>کل </th>
               <th>پرداخت</th>
-              <th>تحویل داده شده</th>
-              <th>وضعیت </th>
             </tr>
           </thead>
           <tbody>
@@ -36,12 +34,6 @@ export default function OrderHistoryScreen(props) {
                 <td>{order._id}</td>
                 <td>{order.createdAt.substring(0, 10)}</td>
                 <td>{order.totalPrice}   تومان  </td>
-                <td>{order.isPaid ? order.paidAt.substring(0, 10) : 'خیر'}</td>
-                <td>
-                  {order.isDelivered
-                    ? order.deliveredAt.substring(0, 10)
-                    : 'خیر'}
-                </td>
                 <td>
                   <button
                     type="button"
