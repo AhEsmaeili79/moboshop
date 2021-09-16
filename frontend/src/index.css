@@ -2598,6 +2598,9 @@ i.bx-log-in:before{
 }
 
 @media (max-width: 420px) {
+  div.fixing{
+    margin-right: -5px;
+  }
   .sidebar li .tooltip{
     display: none;
   }
@@ -2613,7 +2616,9 @@ i.bx-log-in:before{
   
 }
 @media (max-width: 410px) {
- 
+ .fixing{
+    margin-right: -5px;
+  }
   .slider-seller{
     width: 310px;
     height: 180px;
@@ -2630,6 +2635,9 @@ i.bx-log-in:before{
   }
 }
 @media (max-width: 400px) {
+ .fixing{
+    margin-right: -5px;
+  }
   .fixing-product{
     margin-right: 45px;
   }
