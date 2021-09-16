@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { deliverOrder, detailsOrder, payOrder } from '../actions/orderActions';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
+import ZarinPalCheckout from 'zarinpal-checkout';
 
 import {
   ORDER_DELIVER_RESET,
@@ -21,8 +22,32 @@ export default function OrderScreen(props) {
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
   
+/**
+ * Create ZarinPal
+ * @param {String} `1aaccd0b-9c1b-405c-8952-f21f8bd277bc` [Merchant ID]
+ * @param {Boolean} false [toggle `Sandbox` mode]
+ */
+ const zarinpal = ZarinPalCheckout.create('1aaccd0b-9c1b-405c-8952-f21f8bd277bc', false);
+  
+ /**
+ * PaymentRequest [module]
+ * @return {String} URL [Payement Authority]
+ */
+zarinpal.PaymentRequest({
+  Amount: '1000', // In Tomans
+  CallbackURL: 'https://api.zarinpal.com/pg/v4/payment/request.json',
+  Description: 'A Payment from Node.JS',
+  Email: 'hi@siamak.work',
+  Mobile: '09120000000'
+}).then(response => {
+  if (response.status === 200) {
+    console.log(response.url);
+  }
+}).catch(err => {
+  console.error(err);
+});
 
-  //  const script = document.createElement('script');
+ //  const script = document.createElement('script');
   // script.type = 'text/javascript';
   // script.src ="";
   // const merchant_id =  "1aaccd0b-9c1b-405c-8952-f21f8bd277bc";
@@ -36,7 +61,7 @@ export default function OrderScreen(props) {
   let params = {
         MerchantID :  "1aaccd0b-9c1b-405c-8952-f21f8bd277bc",
         Amount : 1000 ,
-        CallbackURL : "http://localhost:3000/callback/",
+        CallbackURL : "https://moboshop.herokuapp.com/order/",
         Description : "خرید ",
       }
      
@@ -221,7 +246,7 @@ export default function OrderScreen(props) {
                         <button
                           
                           type="submit"
-                          onClick={payment}
+                          onClick={zarinpal.PaymentRequest}
                           className="primary block peyment"
                         >
                           پرداخت
