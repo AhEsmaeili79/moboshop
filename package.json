@@ -1,8 +1,8 @@
 {
-  "name": "amazona",
+  "name": "Moboshop",
   "type": "module",
   "version": "1.0.0",
-  "description": "Ecommerce website like amazon",
+  "description": "Ecommerce website ",
   "main": "index.js",
   "scripts": {
     "build": "cd frontend && npm install && npm run build",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/basir/amazona.git"
+    "url": "git+https://github.com/amirhosseine13579/moboshop.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/basir/amazona/issues"
+    "url": "https://github.com/amirhosseine13579/moboshop/issues"
   },
-  "homepage": "https://github.com/basir/amazona#readme",
+  "homepage": "https://github.com/amirhosseine13579/moboshop#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "dotenv": "^8.2.0",
@@ -27,7 +27,8 @@
     "mailgun-js": "^0.22.0",
     "mongoose": "^5.10.7",
     "multer": "^1.4.2",
-    "socket.io": "^4.0.1"
+    "socket.io": "^4.0.1",
+    "zarinpal-checkout": "^0.2.7"
   },
   "devDependencies": {
     "eslint": "^7.9.0",
