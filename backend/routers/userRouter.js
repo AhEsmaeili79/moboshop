@@ -4,8 +4,6 @@ import bcrypt from 'bcryptjs';
 import data from '../data.js';
 import User from '../models/userModel.js';
 import { generateToken, isAdmin, isAuth } from '../utils.js';
-import emailjs from 'emailjs-com';
-import { name } from 'ejs';
 
 
 const userRouter = express.Router();
@@ -46,10 +44,8 @@ userRouter.post(
         return;
       }
     }
-    res.status(401).send({ message: 'ایمیل یا کلمه عبور شما نادرست است .' });
   })
 );
-
 
 userRouter.post(
   '/register',
@@ -77,16 +73,9 @@ userRouter.post(
             token: generateToken(createdUser),
           });
           return;
-
-          emailjs.sendForm('service_bf7q9pt','template_dgxke3y', req.body.email,'user_ISdE296sCHUviZOFHGItt' )
-          .then(function(response) {
-            console.log('SUCCESS!', response.status, response.text);
-          }, function(err) {
-            console.log('FAILED...', err);
-          });
         }
         else{
-          res.status(401).send({ message: 'شماره تلفن باید ده رقم باشد (بدون صفر)' });
+          res.status(401).send({ message: '(بدون صفر)شماره تلفن باید ده رقم باشد' });
         }
       }
       else{
@@ -145,7 +134,7 @@ userRouter.put(
       }
     }
     else{
-      res.status(401).send({ message: 'شماره تلفن باید ده رقم باشد  (بدون صفر)' });
+      res.status(401).send({ message: '(بدون صفر)شماره تلفن باید ده رقم باشد' });
     }
   })
 );

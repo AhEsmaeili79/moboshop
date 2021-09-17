@@ -24,8 +24,8 @@ app.use('/api/uploads', uploadRouter);
 app.use('/api/users', userRouter);
 app.use('/api/products', productRouter);
 app.use('/api/orders', orderRouter);
-app.get('/api/config/paypal', (req, res) => {
-  res.send(process.env.ZARINPAL_CLIENT_ID || 'sb');
+app.get('/api/config/zarinpal', (req, res) => {
+  res.send(process.env.ZARINPAL_CLIENT_ID || '1aaccd0b-9c1b-405c-8952-f21f8bd277bc');
 });
 app.get('/api/config/google', (req, res) => {
   res.send(process.env.GOOGLE_API_KEY || '');

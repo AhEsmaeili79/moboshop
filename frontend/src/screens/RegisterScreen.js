@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 import { register } from '../actions/userActions';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
-
+import emailjs from 'emailjs-com';
+import { name } from 'ejs';
 
 export default function RegisterScreen(props) {
   const [name, setName] = useState('');
@@ -16,6 +17,18 @@ export default function RegisterScreen(props) {
   const redirect = props.location.search
     ? props.location.search.split('=')[1]
     : '/';
+// function sendemail(){
+//     emailjs.sendForm(
+//       'service_bf7q9pt',
+//       'template_dgxke3y', 
+//       email.value,
+//       'user_ISdE296sCHUviZOFHGItt' )
+//       .then(function(response) {
+//        console.log('SUCCESS!', response.status, response.text);
+//     }, function(err) {
+//        console.log('FAILED...', err);
+//     })
+// }
 
   const userRegister = useSelector((state) => state.userRegister);
   const { userInfo, loading, error } = userRegister;
