@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom';
 import { deliverOrder, detailsOrder, payOrder } from '../actions/orderActions';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
-import ZarinPalCheckout from 'zarinpal-checkout';
 
 import {
   ORDER_DELIVER_RESET,
@@ -77,35 +76,35 @@ export default function OrderScreen(props) {
     dispatch(deliverOrder(order._id));
   };
 
-  const payment = async (t) => {
-/**
- * Create ZarinPal
- * @param {String} `1aaccd0b-9c1b-405c-8952-f21f8bd277bc` [Merchant ID]
- * @param {Boolean} false [toggle `Sandbox` mode]
- */
- const zarinpal = ZarinPalCheckout.create('1aaccd0b-9c1b-405c-8952-f21f8bd277bc', false);
+//   const payment = async (t) => {
+// /**
+//  * Create ZarinPal
+//  * @param {String} `1aaccd0b-9c1b-405c-8952-f21f8bd277bc` [Merchant ID]
+//  * @param {Boolean} false [toggle `Sandbox` mode]
+//  */
+//  const zarinpal = ZarinPalCheckout.create('1aaccd0b-9c1b-405c-8952-f21f8bd277bc', false);
   
- /**
- * PaymentRequest [module]
- * @return {String} 
- */
-zarinpal.PaymentRequest({
-  Amount: t.totalPrice , // In Tomans
-  CallbackURL: 'https://your-safe-api/example/zarinpal/validate',
-  Description: 'A Payment from Node.JS',
-  Email: 'test@test.work',
-  Mobile: '09120000000'
-}).then(response => {
-  if (response.status === 100) {
-    console.log(response.url);
-    window.location = response.url;
-    return response.url;
-  }
-}).catch(err => {
-  console.error(err);
-});
+//  /**
+//  * PaymentRequest [module]
+//  * @return {String} 
+//  */
+// zarinpal.PaymentRequest({
+//   Amount: t.totalPrice , // In Tomans
+//   CallbackURL: 'https://your-safe-api/example/zarinpal/validate',
+//   Description: 'A Payment from Node.JS',
+//   Email: 'test@test.work',
+//   Mobile: '09120000000'
+// }).then(response => {
+//   if (response.status === 100) {
+//     console.log(response.url);
+//     window.location = response.url;
+//     return response.url;
+//   }
+// }).catch(err => {
+//   console.error(err);
+// });
 
-}
+// }
 
 
   return loading ? (
@@ -233,7 +232,6 @@ zarinpal.PaymentRequest({
                       <from  method="POST" >
                         <button
                           type="submit"
-                          onClick={payment(order)}
                           className="primary block payment"
 
                         >
