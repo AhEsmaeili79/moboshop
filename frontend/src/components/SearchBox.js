@@ -7,7 +7,7 @@ export default function SearchBox(props) {
     props.history.push(`/search/name/${name}`);
   };
   return (
-    <form className="search" onSubmit={submitHandler}>
+    <form className="searchform" onSubmit={submitHandler}>
       <div className="row">
         <i className='bx bx-search' ></i>
         <input className="search" type="text" placeholder="...جستوجو" type="text"

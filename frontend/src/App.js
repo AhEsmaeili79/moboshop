@@ -56,7 +56,8 @@ function App() {
     <BrowserRouter>
       <div className="grid-container ">
         <header className="row ">
-      
+              <i className="bx bx-menu open-sidebar"></i>
+            
         <a className="brand" href="/">موبوشاپ</a>
         {userInfo ? (
          <h1 className="welcome"> {userInfo.name} خوش آمدید </h1>
@@ -66,7 +67,7 @@ function App() {
         </header>
          <div className="sidebar">
           <div className="logo-details">
-          <i className='bx bx-mobile-alt icon'></i>
+          <i class='bx bx-mobile-alt icon'></i>
               <div className="logo_name"><a  href="/">موبوشاپ
             </a></div>
               <i className='bx bx-menu' id="btn" ></i>
@@ -157,7 +158,7 @@ function App() {
                   <li>
                   <div className="iocn-link">
                     <a className="link-menu" href="#">
-                    <i className='bx bxs-shopping-bags' ></i>
+                    <i class='bx bxs-shopping-bags' ></i>
                       <span className="links_name">فروشنده</span>
                     </a>
                     <i className='bx bxs-chevron-down arrow' ></i>
@@ -178,7 +179,7 @@ function App() {
             <li>
               <div className="iocn-link">
                 <a className="link-menu" href="#">
-                <i className='bx bx-cog' ></i>
+                <i class='bx bx-cog' ></i>
                   <span className="links_name">  مدیریت </span>
                 </a>
                 <i className='bx bxs-chevron-down arrow' ></i>
@@ -217,7 +218,6 @@ function App() {
                   )}
                   
             </li>
-            
           </ul>
         </div>
         <main>

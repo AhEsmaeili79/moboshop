@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 import { register } from '../actions/userActions';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
-
+import emailjs from 'emailjs-com';
+import { name } from 'ejs';
 
 export default function RegisterScreen(props) {
   const [name, setName] = useState('');
@@ -16,9 +17,19 @@ export default function RegisterScreen(props) {
   const redirect = props.location.search
     ? props.location.search.split('=')[1]
     : '/';
+// function sendemail(){
+//     emailjs.sendForm(
+//       'service_bf7q9pt',
+//       'template_dgxke3y', 
+//       email.value,
+//       'user_ISdE296sCHUviZOFHGItt' )
+//       .then(function(response) {
+//        console.log('SUCCESS!', response.status, response.text);
+//     }, function(err) {
+//        console.log('FAILED...', err);
+//     })
+// }
 
-
-    
   const userRegister = useSelector((state) => state.userRegister);
   const { userInfo, loading, error } = userRegister;
   const dispatch = useDispatch();
@@ -29,8 +40,13 @@ export default function RegisterScreen(props) {
     }
     else {
       dispatch(register(name, email, phonenumber, password));
+
+     
     }
   };
+;
+    
+
   useEffect(() => {
     if (userInfo) {
       props.history.push(redirect);
@@ -47,6 +63,7 @@ export default function RegisterScreen(props) {
         <div>
           <label htmlFor="name">نام</label>
           <input
+            name="name"
             type="text"
             id="name"
             placeholder="نام را وارد کنید "
@@ -58,17 +75,18 @@ export default function RegisterScreen(props) {
         </div>
         <div >
           <label htmlFor="phonenumber" > شماره تلفن همراه </label>
-          <div onsubmit="process(event)">
+          <div>
                 <input id="phonenumber" type="tel" name="phone" oninvalid="this.setCustomValidity(' لطفا تلفن همراه را وارد کنید ')"
                   oninput="this.setCustomValidity('')"
                   required
                   onChange={(e) => setPhonenumber(e.target.value)}/>
-                <input type="submit" className="btn" value="تایید" />
+                {/* <input type="submit" className="btn" value="تایید" /> */}
           </div>
         </div>
         <div>
           <label htmlFor="email">ایمیل </label>
           <input
+            name="email"
             type="email"
             id="email"
             placeholder="ایمیل را وارد کنید "

@@ -1,5 +1,5 @@
 
-// import { PayPalButton } from 'react-paypal-button-v2';
+import { PayPalButton } from 'react-paypal-button-v2';
 import Axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import { deliverOrder, detailsOrder, payOrder } from '../actions/orderActions';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
-// import ZarinPalCheckout from 'zarinpal-checkout';
+import ZarinPalCheckout from 'zarinpal-checkout';
 
 import {
   ORDER_DELIVER_RESET,
@@ -21,31 +21,7 @@ export default function OrderScreen(props) {
   const { order, loading, error } = orderDetails;
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
-  
-// /**
-//  * Create ZarinPal
-//  * @param {String} `1aaccd0b-9c1b-405c-8952-f21f8bd277bc` [Merchant ID]
-//  * @param {Boolean} false [toggle `Sandbox` mode]
-//  */
-//  const zarinpal = ZarinPalCheckout.create('1aaccd0b-9c1b-405c-8952-f21f8bd277bc', false);
-  
-//  /**
-//  * PaymentRequest [module]
-//  * @return {String} URL [Payement Authority]
-//  */
-// zarinpal.PaymentRequest({
-//   Amount: '1000', // In Tomans
-//   CallbackURL: 'https://api.zarinpal.com/pg/v4/payment/request.json',
-//   Description: 'A Payment from Node.JS',
-//   Email: 'hi@siamak.work',
-//   Mobile: '09120000000'
-// }).then(response => {
-//   if (response.status === 200) {
-//     console.log(response.url);
-//   }
-// }).catch(err => {
-//   console.error(err);
-// });
+
 
  //  const script = document.createElement('script');
   // script.type = 'text/javascript';
@@ -58,18 +34,18 @@ export default function OrderScreen(props) {
   // const phonenumber = userInfo.phonenumber;
 
 
-  let params = {
-        MerchantID :  "1aaccd0b-9c1b-405c-8952-f21f8bd277bc",
-        Amount : 1000 ,
-        CallbackURL : "https://moboshop.herokuapp.com/order/",
-        Description : "خرید ",
-      }
+  // let params = {
+  //       MerchantID :  "1aaccd0b-9c1b-405c-8952-f21f8bd277bc",
+  //       Amount : 1000 ,
+  //       CallbackURL : "https://moboshop.herokuapp.com/order/",
+  //       Description : "خرید ",
+  //     }
      
-     var response;
-      const payment = async () => {
-       response = await Axios.post("https://api.zarinpal.com/pg/v4/payment/request.json", params);
-       console.log(response);
-      };
+  //    var response;
+  //     const payment = async () => {
+  //      response = await Axios.post("https://your-safe-api/example/zarinpal/validate", params);
+  //      console.log(response);
+  //     };
   
   const orderPay = useSelector((state) => state.orderPay);
   const {
@@ -86,8 +62,15 @@ export default function OrderScreen(props) {
   const dispatch = useDispatch();
   useEffect(() => {
     const addPayPalScript = async () => {
-
+      const { data } = await Axios.get('/api/config/paypal');
+      const script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.src = `https://www.zarinpal.com/sdk/js?client-id=${data}`;
+      script.async = true;
+      script.onload = () => {
         setSdkReady(true);
+      };
+      document.body.appendChild(script);
     };
     if (
       !order ||
@@ -109,6 +92,7 @@ export default function OrderScreen(props) {
     }
   }, [dispatch, orderId, sdkReady, successPay, successDeliver, order]);
 
+  
   const successPaymentHandler = (paymentResult) => {
     dispatch(payOrder(order, paymentResult));
   };
@@ -116,12 +100,44 @@ export default function OrderScreen(props) {
     dispatch(deliverOrder(order._id));
   };
 
+  const payment = async (t) => {
+/**
+ * Create ZarinPal
+ * @param {String} `1aaccd0b-9c1b-405c-8952-f21f8bd277bc` [Merchant ID]
+ * @param {Boolean} false [toggle `Sandbox` mode]
+ */
+ const zarinpal = ZarinPalCheckout.create('1aaccd0b-9c1b-405c-8952-f21f8bd277bc', false);
+  
+ /**
+ * PaymentRequest [module]
+ * @return {String} 
+ */
+zarinpal.PaymentRequest({
+  Amount: t.totalPrice , // In Tomans
+  CallbackURL: 'https://your-safe-api/example/zarinpal/validate',
+  Description: 'A Payment from Node.JS',
+  Email: 'test@test.work',
+  Mobile: '09120000000'
+}).then(response => {
+  if (response.status === 100) {
+    console.log(response.url);
+    window.location = response.url;
+    return response.url;
+  }
+}).catch(err => {
+  console.error(err);
+});
+
+
+}
+
+
   return loading ? (
     <LoadingBox></LoadingBox>
   ) : error ? (
     <MessageBox variant="danger">{error}</MessageBox>
   ) : (
-    
+   
     <div className="fixing-order">
       <h1>سفارش :  {order._id}</h1>
       <div className="row top">
@@ -242,17 +258,20 @@ export default function OrderScreen(props) {
                         onSuccess={successPaymentHandler}
                       ></PayPalButton> */}
 
-                      <from action="/:id/payment" method="POST" >
+                      <from  method="POST" >
                         <button
-                          
                           type="submit"
-                          // onClick={zarinpal.PaymentRequest}
-                          className="primary block peyment"
+                          onClick={payment(order)}
+                          className="primary block payment"
+
                         >
                           پرداخت
                         </button>
                       </from>
-
+                      <PayPalButton
+                        amount={order.totalPrice}
+                        onSuccess={successPaymentHandler}
+                      ></PayPalButton>
                    </> 
                   )}
                 </li>
