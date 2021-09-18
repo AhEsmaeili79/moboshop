@@ -26,7 +26,6 @@ userRouter.get(
     res.send({ createdUsers });
   })
 );
-
 userRouter.post(
   '/signin',
   expressAsyncHandler(async (req, res) => {
@@ -44,9 +43,9 @@ userRouter.post(
         return;
       }
     }
+    res.status(401).send({ message: 'ایمیل یا کلمه عبور شما نادرست است .' });
   })
 );
-
 userRouter.post(
   '/register',
   expressAsyncHandler(async (req, res) => {
