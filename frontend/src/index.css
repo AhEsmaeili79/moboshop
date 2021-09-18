@@ -86,6 +86,10 @@ html {
   direction: rtl;
 }
 body {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5)) ,url("https://cdn.dribbble.com/users/1784766/screenshots/10956408/fn2_4x.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 1920px 1080px;
   color: #333;
   line-height: 1.6;
   margin: 0;
@@ -2343,7 +2347,7 @@ i.bx-log-in:before{
  
 }
 @media (min-width:520px) {
- 
+  
   div.cart-screen{
     margin-right: 78px;
   }
@@ -2363,12 +2367,7 @@ i.bx-log-in:before{
   .fixing-order{
     margin-right: 80px;
   }
-  body{
-    background-image: linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5)) ,url("https://cdn.dribbble.com/users/1784766/screenshots/10956408/fn2_4x.png");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: 1920px 1080px;
-  }
+ 
 }
 @media (max-width:1600px) {
   
