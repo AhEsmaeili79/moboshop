@@ -2499,10 +2499,8 @@ i.bx-log-in:before{
   }
 }
 
-@media (max-width: 520px) {
-   
+@media (max-width: 520px) {   
   body{
-    background-image: linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5)) ,url("https://cdn.dribbble.com/users/1784766/screenshots/10956408/fn2_4x.png");
     background-size:1300 auto;
     background-attachment: fixed;
   }
@@ -2550,6 +2548,9 @@ i.bx-log-in:before{
     margin:auto -40px;
   }
 
+  .fixing-profile form.form {
+    margin: auto 10px;
+  }
   .back-button{
     margin: auto;
     margin-right: -10px;
