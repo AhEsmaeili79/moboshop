@@ -2502,6 +2502,7 @@ i.bx-log-in:before{
 @media (max-width: 520px) {
    
   body{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5)) ,url("https://cdn.dribbble.com/users/1784766/screenshots/10956408/fn2_4x.png");
     background-size:1300 auto;
     background-attachment: fixed;
   }
