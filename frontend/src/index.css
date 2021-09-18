@@ -282,9 +282,10 @@ img.large {
   margin: auto ;
   width: auto;
 }
-.sunpport-card{
+.support-card{
   width: 300px;
   height: auto;
+  z-index: 100;
 }
 
 
@@ -762,6 +763,7 @@ p{
 }
 .chatbox button{
   height: 43px;
+  z-index: 100;
 }
 .support-users {
   background: #f0f0f0;
@@ -964,11 +966,11 @@ input.btn{
       border-bottom: 4px solid #555; }
   .iti__country-list {
     position: absolute;
-    z-index: 2;
+    z-index: 1;
     list-style: none;
-    text-align: left;
+    text-align: center;
     padding: 0;
-    margin: 0 0 0 -1px;
+    margin: auto;
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
     background-color: white;
     border: 1px solid #CCC;
@@ -2584,202 +2586,3 @@ i.bx-log-in:before{
   }
 }
   
-
-/* @media (max-width: 390px) {
-  
-
- a.brand{
-   margin-right: 200px;
- }
-  .slider-seller{
-    width: 290px;
-    height: 200px;
-  }
-  .slider-seller img {
-    width: 290px;
-    height: 200px;
-  }
-  div.cart-screen{
-    margin-right: 90px;
-    width: 270px;
-  }
-  div.col-1.search-category {
-    margin: auto;}
-    
-  form.form{
-    width: 240px;
-    margin-left:20px ;
-  }
-  .card.card-body{
-    width: 230px;
-    padding: 5px;
-    margin: auto;
-  }
-  .slider-seller{
-    width: 280px;
-    height: 200px;
-  }
-  .slider-seller img {
-    width: 280px;
-    height: 200px;
-  }
-  div.cart-screen{
-    margin-right: 80px;
-    width: 260px;
-  }
-  div.col-1.search-category {
-    margin: auto;
-  }
-  .card.card-body{
-    width: 230px;
-    padding: 5px;
-    margin: auto;
-  }
-}
-@media (max-width: 380px) {
-  a.brand{
-    margin-right:80px;
-  }
-
-  div.fixing{
-    margin-right: -5px;
-  }
-  .fixing-product-list{
-    margin-right: 78px;
-  }
-  .slider-seller{
-    width: 280px;
-    height: 200px;
-  }
-  .slider-seller img {
-    width: 280px;
-    height: 200px;
-  }
-  div.cart-screen{
-    margin-right: 80px;
-    width: 260px;
-  }
-  div.col-1.search-category {
-    margin: auto;
-  }
-  .card.card-body{
-    width: 230px;
-    padding: 5px;
-    margin: auto;
-  }
-  /* footer{
-    margin-right: 78px;
-  } 
-}
-*/
-/* @media (max-width: 370px) {
-  .fixing-profile ,.fixing-order-history{
-    margin-right: -25px;
-  }
-  input#phonenumber {
-    width: 200px;
-  }
-  
-  form.form{
-    width: 220px;
-    margin-left:20px ;
-  }
-  .slider-seller{
-    width: 270px;
-    height: 200px;
-    
-  }
-  div.fixing{
-    margin-right: 100px;
-  }
-  .slider-seller img {
-    width: 270px;
-    height: 180px;
-  }
-  div.cart-screen{
-    margin-right: 70px;
-  }
-  .card.card-body{
-    width: 230px;
-    padding: 5px;
-    margin: auto;
-  }
-  footer{
-    margin-right: 78px;
-  }
-}
-
-
- 
-
-
-@media (max-width: 360px) {
-  div.fixing{
-    margin-right: 100px;
-  }
-  .slider-seller{
-    width: 260px;
-  }
-  .slider-seller img {
-    width: 260px;
-  }
-  div.card .medium{
-    width: 280px;
-  }
-  div.cart-screen{
-    margin-right: 60px;
-  }
-  form.form{
-    width: 200px;
-    margin-left:10px ;
-  }
-  .card.card-body{
-    width: 220px;
-    padding: 5px;
-    margin: auto;
-  }
-  input#phonenumber {
-    width: 180px;
-  }
-}
-@media (max-width: 350px) {
-  .slider-seller{
-    width: 250px;
-  }
-  .slider-seller img {
-    width: 250px;
-  }
-  div.card .medium{
-    width: 270px;
-  }
-  div.cart-screen{
-    margin-right: 50px;
-  }
-}
-@media (max-width: 450px){
-  .card.card-body {
-    width: 240px;
-    margin: auto;
-    margin-bottom: 20px;
-    margin-right: 95px;
-  }
-  
-  img.large{
-    width: 250px;
-    margin-right: 95px;
-  }
-  .product-name {
-    margin-right: 40px;
-    border: solid 1px #cacaca;
-    border-radius: 5px;
-    padding: 40px;
-    margin: 12px 27px;
-    text-align: center;
-    background-color: #cacaca;
-}
-} 
-@media (max-width: 480px) {
-  div.fixing-cart{
-    margin-right:-50px;
-  }
-} */

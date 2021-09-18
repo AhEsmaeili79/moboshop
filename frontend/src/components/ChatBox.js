@@ -69,7 +69,7 @@ export default function ChatBox(props) {
           <i className="fa fa-support" />
         </button>
       ) : (
-        <div className="card card-body sunpport-card">
+        <div className="card card-body support-card">
           <div className="row">
             <strong>پشتیبانی </strong>
             <button type="button" onClick={closeHandler}>
