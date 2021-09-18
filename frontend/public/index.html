@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html  xmlns="http://www.w3.org/1999/xhtml" xml:lang="fa" lang="fa" >
+<html lang="fa" >
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
@@ -105,7 +105,6 @@
      closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");//replacing the iocns class
     }else {
      closeBtn.classList.replace("bx-menu-alt-right","bx-menu");//replacing the iocns class
-     myFunction();
     }
   }
 
@@ -117,10 +116,6 @@ for (var i = 0; i < arrow.length; i++) {
   });
 }
 
-function myFunction() {
-  var element = document.querySelector("nav-list");
-  element.classList.remove("showMenu");
-}
 
 // for Country on phone number input
 
