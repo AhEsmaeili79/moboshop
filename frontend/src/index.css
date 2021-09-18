@@ -254,172 +254,6 @@ div.row.center{
   margin-right: 80px;
 }
 
-@media (min-width:1920px) {
-  input#phonenumber {
-    width: 580px;
-  }
-
-}
-@media (max-width:1920px) {
-  input#phonenumber {
-    width: 580px;
-  }
-  body{
-    background-image: linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5)) ,url("https://cdn.dribbble.com/users/1784766/screenshots/10956408/fn2_4x.png");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: 1920px 1080px;
-  }
-}
-@media (min-width:520px) {
-  body{
-    background-size:1300 auto;
-    background-attachment: fixed;
-  }
-  div.cart-screen{
-    margin-right: 78px;
-  }
-  div.alert.alert-info , .card.card-body.incart-screen{
-    margin: 5px;
-  }
- .fixing-cart div.col-1, .fixing-cart div.col-2{
-   margin-right: -78px;
- }
- .fixing-product div.col-2{
-   margin-right: 78px ;
- }
- .fixing-product form.form{
-  margin-bottom: 10px;
-  }
-
-  .fixing-order{
-    margin-right: 80px;
-  }
-}
-@media (max-width:1600px) {
-  
-  .carousel .slide img {
-    width: auto;
-    height: 900px;
-  }
-  input#phonenumber {
-    width: 580px;
-  }
-}
-@media (max-width:1156px) {
-  
-  .carousel .slide img {
-    width: 90%;
-    height: 700px;
-  }
-    
-  input#phonenumber {
-    width: 580px;
-  }
-}
-@media (max-width:1075px) {
-  
-  input#phonenumber {
-    width: 580px;
-  }
-}
-
-@media (max-width:1000px) {
-  
-  .menu a {
-    font-size: 15px;
-  }
-  input#phonenumber {
-    width: 580px;
-  }
-}
-
-@media (max-width:635px) {
-  input#phonenumber {
-    width:460px;
-  }
-}
-
-@media (min-width:755px) {
-  
-  .menu a {
-    font-size: 13px;
-  }
-  .fixing-cart div.alert.alert-info{
-    margin-left: 80px;
-  }
-  
-}
-
-
-@media (max-width:894px) {
-  
-  .menu a {
-    font-size: 12px;
-    margin-left: 2px;
-    padding: 8px;
-  }
-}
-
-
-@media (max-width:620px) {
-  input#phonenumber {
-    width: 470px;
-  }
-  
-  .background{
-    margin-top: -230px;
-  }
-}
-
-@media (max-width:600px) {
-  input#phonenumber {
-    width: 440px;
-  }
-}
-
-@media (max-width:570px) {
-  input#phonenumber {
-    width: 410px;
-  }
-}
-@media (max-width:540px) {
-  input#phonenumber {
-    width: 370px;
-  }
-}
-
-
-@media (max-width:560) {
-  input#phonenumber {
-    width: 390px;
-  }
-}
-@media (max-width:767px) {
-  .slider-seller{
-    width: 1920px;
-    height: 700px;
-    margin: 10px auto;
-    width: 90%;
-    padding: 10px;
-  }
-  .welcome{display: none;}
-  .background{
-    margin-top: 250px;
-  } 
-  .carousel .slide img {
-    margin: auto;
-     height: 450px;
-  }
-  
-  img.large {
-    width: 100%;
-    margin-top: 10px;
-}
-  .menu a{
-    font-size: 11px;
-  }
-}
 
 
 
@@ -2492,109 +2326,186 @@ a.log_in:hover{
 i.bx-log-in:before{
  size: 60px;
 }
+
+
+/* size of screen */
+
+@media (min-width:1920px) {
+  input#phonenumber {
+    width: 580px;
+  }
+
+}
+@media (max-width:1920px) {
+  input#phonenumber {
+    width: 580px;
+  }
+ 
+}
+@media (min-width:520px) {
+ 
+  div.cart-screen{
+    margin-right: 78px;
+  }
+  div.alert.alert-info , .card.card-body.incart-screen{
+    margin: 5px;
+  }
+ .fixing-cart div.col-1, .fixing-cart div.col-2{
+   margin-right: -78px;
+ }
+ .fixing-product div.col-2{
+   margin-right: 78px ;
+ }
+ .fixing-product form.form{
+  margin-bottom: 10px;
+  }
+
+  .fixing-order{
+    margin-right: 80px;
+  }
+  body{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5)) ,url("https://cdn.dribbble.com/users/1784766/screenshots/10956408/fn2_4x.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 1920px 1080px;
+  }
+}
+@media (max-width:1600px) {
+  
+  .carousel .slide img {
+    width: auto;
+    height: 900px;
+  }
+  input#phonenumber {
+    width: 580px;
+  }
+}
+@media (max-width:1156px) {
+  
+  .carousel .slide img {
+    width: 90%;
+    height: 700px;
+  }
+    
+  input#phonenumber {
+    width: 580px;
+  }
+}
+@media (max-width:1075px) {
+  
+  input#phonenumber {
+    width: 580px;
+  }
+}
+
+@media (max-width:1000px) {
+  
+  .menu a {
+    font-size: 15px;
+  }
+  input#phonenumber {
+    width: 580px;
+  }
+}
+
+@media (max-width:635px) {
+  input#phonenumber {
+    width:460px;
+  }
+}
+
+@media (min-width:755px) {
+  
+  .menu a {
+    font-size: 13px;
+  }
+  .fixing-cart div.alert.alert-info{
+    margin-left: 80px;
+  }
+  
+}
+
+
+@media (max-width:894px) {
+  
+  .menu a {
+    font-size: 12px;
+    margin-left: 2px;
+    padding: 8px;
+  }
+}
+
+
+@media (max-width:620px) {
+  input#phonenumber {
+    width: 470px;
+  }
+  
+  .background{
+    margin-top: -230px;
+  }
+}
+
+@media (max-width:600px) {
+  input#phonenumber {
+    width: 440px;
+  }
+}
+
+@media (max-width:570px) {
+  input#phonenumber {
+    width: 410px;
+  }
+}
+@media (max-width:540px) {
+  input#phonenumber {
+    width: 370px;
+  }
+}
+
+
+@media (max-width:560) {
+  input#phonenumber {
+    width: 390px;
+  }
+}
+@media (max-width:767px) {
+  .slider-seller{
+    width: 1920px;
+    height: 700px;
+    margin: 10px auto;
+    width: 90%;
+    padding: 10px;
+  }
+  .welcome{display: none;}
+  .background{
+    margin-top: 250px;
+  } 
+  .carousel .slide img {
+    margin: auto;
+     height: 450px;
+  }
+  
+  img.large {
+    width: 100%;
+    margin-top: 10px;
+}
+  .menu a{
+    font-size: 11px;
+  }
+}
 @media (max-width: 535px) {
   .welcome{
     display: none;
   }
 }
-/* 
-@media (max-width: 420px) {
-  div.fixing{
-    margin-right: -5px;
-  }
-  .sidebar li .tooltip{
-    display: none;
-  }
-  div.cart-screen{
-    margin-right: 90px;
-  }
-  h1{
-    margin-right: 30px;
-  }
-  .table .order-history{
-    width: 100px;
-  }
-  
-} */
-/* @media (max-width: 410px) {
- .fixing{
-    margin-right: -5px;
-  }
-  .fixing-cart{
-    margin-right: -5px;
-  }
-  .slider-seller{
-    width: 310px;
-    height: 180px;
-  }
-  .slider-seller img {
-    width: 310px;
-    height: 180px;
-  }
-  h1{
-    margin-right: 30px;
-  }
-  .table .order-history{
-    width: 100px;
-  }
-}
-@media (max-width: 400px) {
- .fixing{
-    margin-right: -5px;
-  }
-  .fixing-cart{
-    margin-right: -1px;
-  }
-  .fixing-product{
-    margin-right: 45px;
-  }
-  .fixing-search select{
-    margin-left:-10px;
-    margin-bottom: 10px;
-  }
- 
-  form.form{
-    width: 250px;
-    margin-left:20px ;
-  }
-  input#phonenumber {
-    width: 230px;
-  }
-  a.brand{
-    margin-right: 78px;
-  }
-  
-  div.card.card-body{
-    margin-top: 20px;
-    margin-left: 25px; 
-  }
-  div.col-1.product-name{
-    width:140px ;
-  }
-  .slider-seller{
-    width: 300px;
-    height: 200px;
-  }
-  .slider-seller img {
-    width: 3.0px;
-    height: 200px;
-  }
-  
-   div.col-1.search-category {
-    margin: auto;
-}
-  h1{
-    margin-right: 30px;
-  }
-  .table .order-history{
-    width: 100px;
-  }
-  footer{
-    margin-right: 78px;
-  }
-}*/
 
 @media (max-width: 520px) {
+   
+  body{
+    background-size:1300 auto;
+    background-attachment: fixed;
+  }
 
   .fixing-search , .fixing-cart , 
   .fixing-dashboard , .fixing-register , 
