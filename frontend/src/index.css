@@ -270,6 +270,10 @@ div.row.center{
   }
 }
 @media (min-width:520px) {
+  body{
+    background-size:1300 auto;
+    background-attachment: fixed;
+  }
   div.cart-screen{
     margin-right: 78px;
   }
